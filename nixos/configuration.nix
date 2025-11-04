@@ -6,6 +6,7 @@
 {
   imports = [
     ./gandicloud.nix
+    ./frontend.nix
     "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
   ];
 
@@ -31,28 +32,6 @@
 
     # let you SSH in over the public internet
     allowedTCPPorts = [ 22 ];
-  };
-
-  services.caddy = {
-    enable = true;
-    virtualHosts."http://lab.2m.lt".extraConfig = ''
-      header Content-Type text/html
-      respond "
-        <h3>Welcome to the 2m lab</h3>
-        <dl>
-          <dt><a href='http://irc.2m.lt'>http://irc.2m.lt</a></dt>
-          <dd>The Lounge IRC Web client</dd>
-          <dt><a href='http://books.2m.lt'>http://books.2m.lt</a></dt>
-          <dd>Calibre Web book library</dd>
-        </dl>
-      "
-    '';
-    virtualHosts."http://irc.2m.lt".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.thelounge.port}
-    '';
-    virtualHosts."http://books.2m.lt".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.calibre-web.listen.port}
-    '';
   };
 
   services = {

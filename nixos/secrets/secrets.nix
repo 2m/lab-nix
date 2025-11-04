@@ -6,6 +6,16 @@ let
   systems = [ lab2m ];
 in
 {
-  "restic_password.age" = { publicKeys = users ++ systems; armor = true; };
-  "restic_repository.age" = { publicKeys = users ++ systems; armor = true; };
+  "restic_password.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
+  "restic_repository.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
+  "cloudflare_token.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
 }

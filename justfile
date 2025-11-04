@@ -13,4 +13,4 @@ dev-prep:
     nix profile add github:ryantm/agenix
 
 encrypt secret:
-    cd nixos; env EDITOR=hx RULES=./secrets/secrets.nix agenix -e {{secret}}.age
+    cd nixos/secrets; env EDITOR=hx agenix -e {{secret}}.age
