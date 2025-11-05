@@ -7,6 +7,13 @@ push:
 build:
     ssh root@ssh.lab.2m.lt -t 'nixos-rebuild switch'
 
+upgrade channel:
+    ssh root@ssh.lab.2m.lt -t 'nix-channel --add https://nixos.org/channels/nixos-{{channel}} nixos'
+    ssh root@ssh.lab.2m.lt -t 'nixos-rebuild switch --upgrade'
+
+cleanup:
+    ssh root@ssh.lab.2m.lt -t 'nix-collect-garbage -d'
+
 dev-prep:
     nix profile add github:nixos/nixpkgs#nixd
     nix profile add github:nixos/nixpkgs#nixfmt

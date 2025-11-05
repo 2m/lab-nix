@@ -18,6 +18,8 @@ in
           <dd>The Lounge IRC Web client</dd>
           <dt><a href='https://books.2m.lt'>https://books.2m.lt</a></dt>
           <dd>Calibre Web book library</dd>
+          <dt><a href='https://mon.2m.lt'>https://mon.2m.lt</a></dt>
+          <dd>Server monitoring</dd>
         </dl>
       "
       ${tlsconfig}
@@ -28,6 +30,10 @@ in
     '';
     virtualHosts."https://books.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.calibre-web.listen.port}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://mon.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.grafana.settings.server.http_port}
       ${tlsconfig}
     '';
   };
@@ -45,6 +51,7 @@ in
       extraDomainNames = [
         "irc.2m.lt"
         "books.2m.lt"
+        "mon.2m.lt"
       ];
       dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";

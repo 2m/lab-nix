@@ -7,6 +7,9 @@
   imports = [
     ./gandicloud.nix
     ./frontend.nix
+    ./grafana.nix
+    ./victoriametrics.nix
+    ./victorialogs.nix
     "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
   ];
 
@@ -16,6 +19,7 @@
     btop
     tailscale
     dua
+    git
   ];
 
   programs.fish.enable = true;
@@ -33,6 +37,13 @@
     # let you SSH in over the public internet
     allowedTCPPorts = [ 22 ];
   };
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 4 * 1024;
+    }
+  ];
 
   services = {
     tailscale.enable = true;
