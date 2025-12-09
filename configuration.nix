@@ -44,6 +44,8 @@
     intel-gpu-tools
     jq
     bc
+    bat
+    dua
   ];
 
   programs.fish = {

@@ -1,15 +1,6 @@
-fetch:
-    rsync -chavzP --stats root@192.168.86.30:/etc/nixos .
-
-push:
-    rsync -chavzP --stats ./nixos/ root@192.168.86.30:/etc/nixos/
 
 build:
-    ssh root@ssh.lab.2m.lt -t 'nixos-rebuild switch'
-
-upgrade channel:
-    ssh root@ssh.lab.2m.lt -t 'nix-channel --add https://nixos.org/channels/nixos-{{channel}} nixos'
-    ssh root@ssh.lab.2m.lt -t 'nixos-rebuild switch --upgrade'
+    ssh root@192.168.86.30 -t 'nixos-rebuild switch --flake /etc/nixos#lab2m'
 
 cleanup:
     ssh root@ssh.lab.2m.lt -t 'nix-collect-garbage -d'
