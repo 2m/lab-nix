@@ -1,8 +1,8 @@
 fetch:
-    rsync -chavzP --stats root@ssh.lab.2m.lt:/etc/nixos .
+    rsync -chavzP --stats root@192.168.86.30:/etc/nixos .
 
 push:
-    rsync -chavzP --stats ./nixos/ root@ssh.lab.2m.lt:/etc/nixos/
+    rsync -chavzP --stats ./nixos/ root@192.168.86.30:/etc/nixos/
 
 build:
     ssh root@ssh.lab.2m.lt -t 'nixos-rebuild switch'
