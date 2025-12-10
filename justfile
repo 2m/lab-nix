@@ -1,9 +1,17 @@
 
 build:
-    ssh root@192.168.86.30 -t 'nixos-rebuild switch --flake /etc/nixos#lab2m'
+    ssh root@lab.2m.lt -t 'nixos-rebuild switch --flake /etc/nixos#lab-hb'
+
+repl:
+    ssh root@lab.2m.lt -t 'nixos-rebuild repl --flake /etc/nixos#lab-hb'
+
+wip:
+    git ciaa
+    git push lab-hb --force
+    just build
 
 cleanup:
-    ssh root@ssh.lab.2m.lt -t 'nix-collect-garbage -d'
+    ssh root@lab.2m.lt -t 'nix-collect-garbage -d'
 
 dev-prep:
     nix profile add github:nixos/nixpkgs#nixd
@@ -11,4 +19,4 @@ dev-prep:
     nix profile add github:ryantm/agenix
 
 encrypt secret:
-    cd nixos/secrets; env EDITOR=hx agenix -e {{secret}}.age
+    cd secrets; env EDITOR=hx agenix -e {{secret}}.age

@@ -3,6 +3,11 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./frontend.nix
+    ./grafana.nix
+    ./network.nix
+    ./victorialogs.nix
+    ./victoriametrics.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,15 +33,7 @@
     kernelModules = [ "r8152" "usbnet" "cdc_ether" "xhci_pci" "ehci_pci" "uhci_hcd" ];
   };
 
-  networking.hostName = "lab2m";
-  networking.networkmanager.enable = true;
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
-
   time.timeZone = "Europe/Vilnius";
-
-  users.users."root".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdOC8PgQg6ZZG51pdVRFoihpD9a9D3e4gQKmDB/JVmh carla-31-03-2023"
-  ];
 
   environment.systemPackages = with pkgs; [
     wget
@@ -58,7 +55,33 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  services.openssh.enable = true;
+  # speedup system builds
+  documentation.man.generateCaches = false;
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 4 * 1024;
+    }
+  ];
+
+  services = {
+    thelounge.enable = true;
+    calibre-web = {
+      enable = true;
+      options = {
+        enableBookUploading = true;
+        calibreLibrary = "/var/lib/calibre-library";
+      };
+    };
+    lubelogger.enable = true;
+    dawarich = {
+      enable = true;
+      configureNginx = false;
+      localDomain = "track.2m.lt";
+      webPort = 7000;
+    };
+  };
 
   virtualisation.docker = {
     enable = true;
@@ -75,5 +98,28 @@
   };
 
   system.stateVersion = "25.11";
+
+  age.secrets.restic_password.file = ./secrets/restic_password.age;
+  age.secrets.restic_repository.file = ./secrets/restic_repository.age;
+
+  services.restic.backups = {
+    borgbase = {
+      initialize = true;
+      paths = [
+        "/var/lib"
+      ];
+      exclude = [
+        "/var/lib/docker"
+      ];
+      passwordFile = config.age.secrets.restic_password.path; # encryption
+      repositoryFile = config.age.secrets.restic_repository.path;
+
+      timerConfig = {
+        # when to backup
+        OnCalendar = "00:05";
+        RandomizedDelaySec = "5h";
+      };
+    };
+  };
 }
 
