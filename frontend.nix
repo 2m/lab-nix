@@ -20,6 +20,10 @@ in
           <dd>Calibre Web book library</dd>
           <dt><a href='https://mon.2m.lt'>https://mon.2m.lt</a></dt>
           <dd>Server monitoring</dd>
+          <dt><a href='https://cars.2m.lt/'>https://cars.2m.lt/</a></dt>
+          <dd>Car maintenance tracking</dd>
+          <dt><a href='https://track.2m.lt/'>https://track.2m.lt/</a></dt>
+          <dd>Location tracking</dd>
         </dl>
       "
       ${tlsconfig}
@@ -34,6 +38,14 @@ in
     '';
     virtualHosts."https://mon.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.grafana.settings.server.http_port}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://cars.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.lubelogger.port}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://track.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.dawarich.webPort}
       ${tlsconfig}
     '';
   };
@@ -52,6 +64,8 @@ in
         "irc.2m.lt"
         "books.2m.lt"
         "mon.2m.lt"
+        "cars.2m.lt"
+        "track.2m.lt"
       ];
       dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";
