@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 
@@ -28,6 +29,12 @@
           # stream_parse = true;
           scrape_interval = "60s";
           static_configs = [ { targets = [ "http://127.0.0.1:8428/metrics" ]; } ];
+        }
+        {
+          job_name = "qbittorrent";
+          # stream_parse = true;
+          scrape_interval = "60s";
+          static_configs = [ { targets = [ "http://127.0.0.1:${toString config.services.qbittorrent-exporter.port}/metrics" ]; } ];
         }
       ];
     };

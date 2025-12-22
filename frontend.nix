@@ -14,38 +14,44 @@ in
       respond "
         <h3>Welcome to the 2m lab</h3>
         <dl>
-          <dt><a href='https://irc.2m.lt'>https://irc.2m.lt</a></dt>
+          <dt><a href='https://irc.lab.2m.lt'>https://irc.lab.2m.lt</a></dt>
           <dd>The Lounge IRC Web client</dd>
-          <dt><a href='https://books.2m.lt'>https://books.2m.lt</a></dt>
+          <dt><a href='https://books.lab.2m.lt'>https://books.lab.2m.lt</a></dt>
           <dd>Calibre Web book library</dd>
-          <dt><a href='https://mon.2m.lt'>https://mon.2m.lt</a></dt>
+          <dt><a href='https://mon.lab.2m.lt'>https://mon.lab.2m.lt</a></dt>
           <dd>Server monitoring</dd>
-          <dt><a href='https://cars.2m.lt/'>https://cars.2m.lt/</a></dt>
+          <dt><a href='https://cars.lab.2m.lt/'>https://cars.lab.2m.lt/</a></dt>
           <dd>Car maintenance tracking</dd>
-          <dt><a href='https://track.2m.lt/'>https://track.2m.lt/</a></dt>
+          <dt><a href='https://track.lab.2m.lt/'>https://track.lab.2m.lt/</a></dt>
           <dd>Location tracking</dd>
+          <dt><a href='https://torrents.lab.2m.lt/'>https://torrents.lab.2m.lt/</a></dt>
+          <dd>Torrent Downloads</dd>
         </dl>
       "
       ${tlsconfig}
     '';
-    virtualHosts."https://irc.2m.lt".extraConfig = ''
+    virtualHosts."https://irc.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.thelounge.port}
       ${tlsconfig}
     '';
-    virtualHosts."https://books.2m.lt".extraConfig = ''
+    virtualHosts."https://books.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.calibre-web.listen.port}
       ${tlsconfig}
     '';
-    virtualHosts."https://mon.2m.lt".extraConfig = ''
+    virtualHosts."https://mon.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.grafana.settings.server.http_port}
       ${tlsconfig}
     '';
-    virtualHosts."https://cars.2m.lt".extraConfig = ''
+    virtualHosts."https://cars.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.lubelogger.port}
       ${tlsconfig}
     '';
-    virtualHosts."https://track.2m.lt".extraConfig = ''
+    virtualHosts."https://track.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.dawarich.webPort}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://torrents.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.qbittorrent.webuiPort}
       ${tlsconfig}
     '';
   };
@@ -61,11 +67,7 @@ in
 
       domain = "lab.2m.lt";
       extraDomainNames = [
-        "irc.2m.lt"
-        "books.2m.lt"
-        "mon.2m.lt"
-        "cars.2m.lt"
-        "track.2m.lt"
+        "*.lab.2m.lt"
       ];
       dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";

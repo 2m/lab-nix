@@ -1,14 +1,17 @@
 
-build:
+switch:
     ssh root@lab.2m.lt -t 'nixos-rebuild switch --flake /etc/nixos#lab-hb'
 
 repl:
     ssh root@lab.2m.lt -t 'nixos-rebuild repl --flake /etc/nixos#lab-hb'
 
+build package:
+    nix-build -E 'with import <nixpkgs> {}; callPackage ./{{package}}.nix {}'
+
 wip:
     git ciaa
     git push lab-hb --force
-    just build
+    just switch
 
 cleanup:
     ssh root@lab.2m.lt -t 'nix-collect-garbage -d'

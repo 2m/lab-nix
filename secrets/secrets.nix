@@ -18,4 +18,8 @@ in
     publicKeys = users ++ systems;
     armor = true;
   };
+  "qbittorrent.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
 }

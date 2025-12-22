@@ -6,6 +6,7 @@
     ./frontend.nix
     ./grafana.nix
     ./network.nix
+    ./qbittorrent-exporter-module.nix
     ./victorialogs.nix
     ./victoriametrics.nix
   ];
@@ -65,6 +66,12 @@
     }
   ];
 
+  age.secrets.qbittorrent = {
+    file = ./secrets/qbittorrent.age;
+    owner = config.services.qbittorrent-exporter.user;
+    group = config.services.qbittorrent-exporter.group;
+  };
+
   services = {
     thelounge.enable = true;
     calibre-web = {
@@ -78,8 +85,20 @@
     dawarich = {
       enable = true;
       configureNginx = false;
-      localDomain = "track.2m.lt";
+      localDomain = "track.lab.2m.lt";
       webPort = 7000;
+    };
+    qbittorrent = {
+      enable = true;
+      package = pkgs.qbittorrent-nox;
+      webuiPort = 8080;
+      torrentingPort = 60413;
+    };
+    qbittorrent-exporter = {
+      enable = true;
+      environment = {
+        QBITTORRENT_PASSWORD_FILE = config.age.secrets.qbittorrent.path;
+      };
     };
   };
 
