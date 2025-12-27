@@ -54,7 +54,10 @@
   };
   users.defaultUserShell = pkgs.fish;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    download-buffer-size = 524288000; # 500MB
+  };
 
   # speedup system builds
   documentation.man.generateCaches = false;
