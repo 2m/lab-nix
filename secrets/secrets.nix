@@ -22,4 +22,16 @@ in
     publicKeys = users ++ systems;
     armor = true;
   };
+  "jellarr_api_key.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
+  "jellarr_env.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
+  "jellyfin_admin_password.age" = {
+    publicKeys = users ++ systems;
+    armor = true;
+  };
 }

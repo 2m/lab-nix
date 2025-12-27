@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     nixpkgs-patch-dawarich = {
       url = "https://github.com/NixOS/nixpkgs/pull/423867.diff";
@@ -19,9 +20,11 @@
       # choose not to download darwin deps (saves some resources on Linux)
       inputs.darwin.follows = "";
     };
+
+    jellarr.url = "github:venkyr77/jellarr";
   };
 
-  outputs = { nixpkgs-patcher, home-manager, agenix, ...}@inputs: {
+  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, ...}@inputs: {
     nixosConfigurations.lab-hb = nixpkgs-patcher.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -32,6 +35,7 @@
           home-manager.useUserPackages = true;
         }
         agenix.nixosModules.default
+        jellarr.nixosModules.default
       ];
       specialArgs = inputs;
     };

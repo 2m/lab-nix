@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./frontend.nix
     ./grafana.nix
+    ./jellyfin.nix
     ./network.nix
     ./qbittorrent-exporter-module.nix
     ./victorialogs.nix
@@ -102,6 +103,14 @@
       environment = {
         QBITTORRENT_PASSWORD_FILE = config.age.secrets.qbittorrent.path;
       };
+    };
+    radarr.enable = true;
+    jackett.enable = true;
+    bazarr = {
+      enable = true;
+      # same user as radarr so bazarr can write subtitles to media dir
+      user = config.services.radarr.user;
+      group = config.services.radarr.group;
     };
   };
 

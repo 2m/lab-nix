@@ -26,6 +26,14 @@ in
           <dd>Location tracking</dd>
           <dt><a href='https://torrents.lab.2m.lt/'>https://torrents.lab.2m.lt/</a></dt>
           <dd>Torrent Downloads</dd>
+          <dt><a href='https://jelly.lab.2m.lt/'>https://jelly.lab.2m.lt/</a></dt>
+          <dd>Jellyfin</dd>
+          <dt><a href='https://radarr.lab.2m.lt/'>https://radarr.lab.2m.lt/</a></dt>
+          <dd>Radarr</dd>
+          <dt><a href='https://bazarr.lab.2m.lt/'>https://bazarr.lab.2m.lt/</a></dt>
+          <dd>bazarr</dd>
+          <dt><a href='https://jackett.lab.2m.lt/'>https://jackett.lab.2m.lt/</a></dt>
+          <dd>Jackett</dd>
         </dl>
       "
       ${tlsconfig}
@@ -52,6 +60,22 @@ in
     '';
     virtualHosts."https://torrents.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.qbittorrent.webuiPort}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://jelly.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:8096
+      ${tlsconfig}
+    '';
+    virtualHosts."https://radarr.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.radarr.settings.server.port}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://jackett.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.jackett.port}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://bazarr.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.bazarr.listenPort}
       ${tlsconfig}
     '';
   };
