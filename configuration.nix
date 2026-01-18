@@ -112,11 +112,24 @@
       user = config.services.radarr.user;
       group = config.services.radarr.group;
     };
+    netalertx = {
+      enable = true;
+      imageTag = "26.1.17";
+      backendApiUrl = "https://nax-api.lab.2m.lt:443";
+    };
   };
 
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
+    autoPrune = {
+      enable = true;
+      flags = ["--all"];
+    };
+  };
+
+  virtualisation.oci-containers = {
+    backend = "docker";
   };
 
   home-manager.users.root = { pkgs, ... }: {

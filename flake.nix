@@ -22,9 +22,11 @@
     };
 
     jellarr.url = "github:venkyr77/jellarr";
+
+    netalertx.url = "github:netalertx/NetAlertX?dir=install/nix";
   };
 
-  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, ...}@inputs: {
+  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
     nixosConfigurations.lab-hb = nixpkgs-patcher.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -36,6 +38,7 @@
         }
         agenix.nixosModules.default
         jellarr.nixosModules.default
+        netalertx.nixosModules.default
       ];
       specialArgs = inputs;
     };

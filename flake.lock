@@ -101,6 +101,23 @@
         "type": "github"
       }
     },
+    "netalertx": {
+      "locked": {
+        "dir": "install/nix",
+        "lastModified": 1769646506,
+        "narHash": "sha256-ZaQQmukhS7DrvBJvpacJAHTJqi1XSXwF0+RPrErgCb8=",
+        "owner": "netalertx",
+        "repo": "NetAlertX",
+        "rev": "928317d16fb7b2bf5e9c17667017f2d91f830e19",
+        "type": "github"
+      },
+      "original": {
+        "dir": "install/nix",
+        "owner": "netalertx",
+        "repo": "NetAlertX",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754028485,
@@ -196,6 +213,7 @@
         "agenix": "agenix",
         "home-manager": "home-manager_2",
         "jellarr": "jellarr",
+        "netalertx": "netalertx",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-patch-dawarich": "nixpkgs-patch-dawarich",
         "nixpkgs-patcher": "nixpkgs-patcher"

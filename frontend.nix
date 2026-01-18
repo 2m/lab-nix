@@ -34,6 +34,8 @@ in
           <dd>bazarr</dd>
           <dt><a href='https://jackett.lab.2m.lt/'>https://jackett.lab.2m.lt/</a></dt>
           <dd>Jackett</dd>
+          <dt><a href='https://nax.lab.2m.lt/'>https://nax.lab.2m.lt/</a></dt>
+          <dd>NetAlertX</dd>
         </dl>
       "
       ${tlsconfig}
@@ -76,6 +78,14 @@ in
     '';
     virtualHosts."https://bazarr.lab.2m.lt".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.bazarr.listenPort}
+      ${tlsconfig}
+    '';
+    virtualHosts."https://nax.lab.2m.lt".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.netalertx.port}
+      ${tlsconfig}
+    '';
+    virtualHosts."${config.services.netalertx.backendApiUrl}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.netalertx.graphqlPort}
       ${tlsconfig}
     '';
   };
