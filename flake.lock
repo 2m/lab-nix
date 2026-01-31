@@ -149,18 +149,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-patch-dawarich": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-0nC9VI+MK+egqUbE0HXkbQzsBfYo4D+hNYnGX/q1wEQ=",
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/423867.diff"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/NixOS/nixpkgs/pull/423867.diff"
-      }
-    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1765447685,
@@ -215,7 +203,6 @@
         "jellarr": "jellarr",
         "netalertx": "netalertx",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-patch-dawarich": "nixpkgs-patch-dawarich",
         "nixpkgs-patcher": "nixpkgs-patcher"
       }
     },

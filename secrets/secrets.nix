@@ -3,35 +3,35 @@ let
   users = [ martynas ];
 
   lab-hb = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAyfDdZO0WBxvQ++KK0KOAZlLFtwzsq96LH0WdKr6+Iy";
-  systems = [ lab-hb ];
+  lab-rpi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKf9pENEsef39webOu8x3/EdU9XW6iQgXSzQEG+ijTHc";
 in
 {
   "restic_password.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
   "restic_repository.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
   "cloudflare_token.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb lab-rpi ];
     armor = true;
   };
   "qbittorrent.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
   "jellarr_api_key.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
   "jellarr_env.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
   "jellyfin_admin_password.age" = {
-    publicKeys = users ++ systems;
+    publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
 }

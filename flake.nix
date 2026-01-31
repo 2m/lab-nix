@@ -1,14 +1,14 @@
 {
-  description = "lab-hb NixOS configuration";
+  description = "2m systems NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-dawarich = {
-      url = "https://github.com/NixOS/nixpkgs/pull/423867.diff";
-      flake = false;
-    };
+    # nixpkgs-patch-dawarich = {
+    #   url = "https://github.com/NixOS/nixpkgs/pull/423867.diff";
+    #   flake = false;
+    # };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -27,20 +27,30 @@
   };
 
   outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
-    nixosConfigurations.lab-hb = nixpkgs-patcher.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-        agenix.nixosModules.default
-        jellarr.nixosModules.default
-        netalertx.nixosModules.default
-      ];
-      specialArgs = inputs;
+    nixosConfigurations = {
+      lab-hb = nixpkgs-patcher.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+          agenix.nixosModules.default
+          jellarr.nixosModules.default
+          netalertx.nixosModules.default
+        ];
+        specialArgs = inputs;
+      };
+      lab-rpi = nixpkgs-patcher.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./lab-rpi/configuration.nix
+          agenix.nixosModules.default
+        ];
+        specialArgs = inputs;
+      };
     };
   };
 }

@@ -28,7 +28,7 @@
   ];
 
   networking = {
-    hostName = "lab-hb";
+    hostName = config.vars.hostname;
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
@@ -42,9 +42,7 @@
       allowedUDPPorts = [ config.services.tailscale.port ];
 
       # let you SSH in over the public internet
-      allowedTCPPorts = config.services.openssh.ports ++ [
-        config.services.qbittorrent.torrentingPort
-      ];
+      allowedTCPPorts = config.services.openssh.ports;
     };
   };
 }

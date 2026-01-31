@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -6,10 +6,13 @@
     ./frontend.nix
     ./grafana.nix
     ./jellyfin.nix
-    ./network.nix
+    ./modules/network.nix
     ./qbittorrent-exporter-module.nix
     ./victorialogs.nix
     ./victoriametrics.nix
+    ./modules/common.nix
+    ./modules/network.nix
+    ./modules/vars.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -35,40 +38,20 @@
     kernelModules = [ "r8152" "usbnet" "cdc_ether" "xhci_pci" "ehci_pci" "uhci_hcd" ];
   };
 
-  time.timeZone = "Europe/Vilnius";
-
   environment.systemPackages = with pkgs; [
-    wget
-    git
     intel-gpu-tools
-    jq
-    bc
-    bat
-    dua
   ];
 
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      nix-shell = "nix-shell --command fish";
+  vars.fqdn = "lab.2m.lt";
+  vars.hostname = "lab-hb";
+
+  networking = {
+    firewall = {
+      allowedTCPPorts = [
+        config.services.qbittorrent.torrentingPort
+      ];
     };
   };
-  users.defaultUserShell = pkgs.fish;
-
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    download-buffer-size = 524288000; # 500MB
-  };
-
-  # speedup system builds
-  documentation.man.generateCaches = false;
-
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 4 * 1024;
-    }
-  ];
 
   age.secrets.qbittorrent = {
     file = ./secrets/qbittorrent.age;
@@ -132,7 +115,7 @@
     backend = "docker";
   };
 
-  home-manager.users.root = { pkgs, ... }: {
+  home-manager.users.root = { ... }: {
     home.stateVersion = "25.11";
 
     programs.helix = {
