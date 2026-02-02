@@ -5,9 +5,9 @@
 }:
 
 {
-  age.secrets.jellarr_api_key.file = ./secrets/jellarr_api_key.age;
-  age.secrets.jellarr_env.file = ./secrets/jellarr_env.age;
-  age.secrets.jellyfin_admin_password.file = ./secrets/jellyfin_admin_password.age;
+  age.secrets.jellarr_api_key.file = ../secrets/jellarr_api_key.age;
+  age.secrets.jellarr_env.file = ../secrets/jellarr_env.age;
+  age.secrets.jellyfin_admin_password.file = ../secrets/jellyfin_admin_password.age;
 
   hardware.graphics = {
     enable = true;

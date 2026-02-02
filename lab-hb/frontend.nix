@@ -83,7 +83,7 @@
     '';
   };
 
-  age.secrets.cloudflare_token.file = ./secrets/cloudflare_token.age;
+  age.secrets.cloudflare_token.file = ../secrets/cloudflare_token.age;
 
   security.acme = {
     acceptTerms = true;

@@ -53,7 +53,7 @@
   };
 
   age.secrets.qbittorrent = {
-    file = ./secrets/qbittorrent.age;
+    file = ../secrets/qbittorrent.age;
     owner = config.services.qbittorrent-exporter.user;
     group = config.services.qbittorrent-exporter.group;
   };
@@ -125,8 +125,8 @@
 
   system.stateVersion = "25.11";
 
-  age.secrets.restic_password.file = ./secrets/restic_password.age;
-  age.secrets.restic_repository.file = ./secrets/restic_repository.age;
+  age.secrets.restic_password.file = ../secrets/restic_password.age;
+  age.secrets.restic_repository.file = ../secrets/restic_repository.age;
 
   services.restic.backups = {
     borgbase = {
