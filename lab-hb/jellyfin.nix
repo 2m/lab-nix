@@ -36,7 +36,7 @@
       };
 
       config = {
-        base_url = "https://jelly.lab.2m.lt";
+        base_url = "https://jelly.${config.vars.fqdn}";
 
         encoding = {
           allowAv1Encoding = false;

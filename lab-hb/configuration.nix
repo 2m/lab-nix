@@ -6,13 +6,12 @@
     ./frontend.nix
     ./grafana.nix
     ./jellyfin.nix
-    ./modules/network.nix
     ./qbittorrent-exporter-module.nix
     ./victorialogs.nix
     ./victoriametrics.nix
-    ./modules/common.nix
-    ./modules/network.nix
-    ./modules/vars.nix
+    ../modules/common.nix
+    ../modules/network.nix
+    ../modules/vars.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -72,7 +71,7 @@
     dawarich = {
       enable = true;
       configureNginx = false;
-      localDomain = "track.lab.2m.lt";
+      localDomain = "track.${config.vars.fqdn}";
       webPort = 7000;
     };
     qbittorrent = {
@@ -98,7 +97,7 @@
     netalertx = {
       enable = true;
       imageTag = "26.1.17";
-      backendApiUrl = "https://nax-api.lab.2m.lt:443";
+      backendApiUrl = "https://nax-api.${config.vars.fqdn}:443";
     };
   };
 
