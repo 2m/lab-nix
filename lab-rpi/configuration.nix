@@ -7,6 +7,7 @@
       ./hardware-configuration.nix
       ./speedtest.nix
       ../modules/common.nix
+      ../modules/monitoring.nix
       ../modules/network.nix
       ../modules/vars.nix
     ];

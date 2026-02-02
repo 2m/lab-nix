@@ -10,6 +10,7 @@
     ./victorialogs.nix
     ./victoriametrics.nix
     ../modules/common.nix
+    ../modules/monitoring.nix
     ../modules/network.nix
     ../modules/vars.nix
   ];
@@ -112,15 +113,6 @@
 
   virtualisation.oci-containers = {
     backend = "docker";
-  };
-
-  home-manager.users.root = { ... }: {
-    home.stateVersion = "25.11";
-
-    programs.helix = {
-      enable = true;
-    };
-
   };
 
   system.stateVersion = "25.11";

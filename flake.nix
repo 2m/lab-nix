@@ -47,6 +47,11 @@
         system = "aarch64-linux";
         modules = [
           ./lab-rpi/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
           agenix.nixosModules.default
         ];
         specialArgs = inputs;
