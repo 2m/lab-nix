@@ -10,6 +10,7 @@
     bat
     dua
     btop
+    eza
   ];
 
   programs = {
@@ -17,6 +18,8 @@
       enable = true;
       shellAliases = {
         nix-shell = "nix-shell --command fish";
+        l = "exa -bghl --sort newest --git";
+        la = "l -a";
       };
     };
     git = {
@@ -34,7 +37,7 @@
           cia = "commit -a -m";
           co = "checkout";
           lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-          lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+          lola = "lol --all";
           # rebase interactively all commits from the fork point of the given branch
           rbi = "!sh -c \"git rebase -i `git merge-base $1 HEAD`\" -";
           # same as rbi but also rebase on top of the given branch
