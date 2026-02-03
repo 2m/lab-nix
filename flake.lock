@@ -80,6 +80,17 @@
         "type": "github"
       }
     },
+    "intel-gpu-exporter": {
+      "locked": {
+        "path": "./flakes/intel-gpu-exporter",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/intel-gpu-exporter",
+        "type": "path"
+      },
+      "parent": []
+    },
     "jellarr": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -200,6 +211,7 @@
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager_2",
+        "intel-gpu-exporter": "intel-gpu-exporter",
         "jellarr": "jellarr",
         "netalertx": "netalertx",
         "nixpkgs": "nixpkgs_3",

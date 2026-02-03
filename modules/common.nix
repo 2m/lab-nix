@@ -11,6 +11,7 @@
     dua
     btop
     eza
+    xh
   ];
 
   programs = {

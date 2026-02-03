@@ -24,6 +24,8 @@
     jellarr.url = "github:venkyr77/jellarr";
 
     netalertx.url = "github:netalertx/NetAlertX?dir=install/nix";
+
+    intel-gpu-exporter.url = "./flakes/intel-gpu-exporter";
   };
 
   outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
@@ -40,6 +42,7 @@
           agenix.nixosModules.default
           jellarr.nixosModules.default
           netalertx.nixosModules.default
+          inputs.intel-gpu-exporter.nixosModules.default
         ];
         specialArgs = inputs;
       };

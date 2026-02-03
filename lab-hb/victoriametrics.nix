@@ -18,7 +18,7 @@
           scrape_interval = "60s";
           static_configs = [
             {
-              targets = [ "127.0.0.1:9100" "lab-rpi.2m.lt:9100" ];
+              targets = [ "127.0.0.1:9100" "127.0.0.1:${toString config.services.intel-gpu-exporter.port}" "lab-rpi.2m.lt:9100" ];
               labels.type = "node";
             }
           ];

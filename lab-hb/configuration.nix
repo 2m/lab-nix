@@ -38,10 +38,6 @@
     kernelModules = [ "r8152" "usbnet" "cdc_ether" "xhci_pci" "ehci_pci" "uhci_hcd" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    intel-gpu-tools
-  ];
-
   vars.fqdn = "lab.2m.lt";
   vars.hostname = "lab-hb";
 
@@ -100,6 +96,7 @@
       imageTag = "26.1.17";
       backendApiUrl = "https://nax-api.${config.vars.fqdn}:443";
     };
+    intel-gpu-exporter.enable = true;
   };
 
   virtualisation.docker = {
