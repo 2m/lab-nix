@@ -25,6 +25,8 @@
           <dd>Radarr</dd>
           <dt><a href='https://bazarr.${config.vars.fqdn}/'>https://bazarr.${config.vars.fqdn}/</a></dt>
           <dd>bazarr</dd>
+          <dt><a href='https://lidarr.${config.vars.fqdn}/'>https://lidarr.${config.vars.fqdn}/</a></dt>
+          <dd>lidarr</dd>
           <dt><a href='https://jackett.${config.vars.fqdn}/'>https://jackett.${config.vars.fqdn}/</a></dt>
           <dd>Jackett</dd>
           <dt><a href='https://nax.${config.vars.fqdn}/'>https://nax.${config.vars.fqdn}/</a></dt>
@@ -71,6 +73,10 @@
     '';
     virtualHosts."https://bazarr.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.bazarr.listenPort}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://lidarr.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.lidarr.settings.server.port}
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://nax.${config.vars.fqdn}".extraConfig = ''
