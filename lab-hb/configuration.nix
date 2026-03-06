@@ -85,7 +85,12 @@
     };
     radarr.enable = true;
     jackett.enable = true;
-    lidarr.enable = true;
+    lidarr = {
+      enable = true;
+      # same user as radarr so bazarr can write subtitles to media dir
+      user = config.services.radarr.user;
+      group = config.services.radarr.group;
+    };
     bazarr = {
       enable = true;
       # same user as radarr so bazarr can write subtitles to media dir
