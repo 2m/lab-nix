@@ -3,9 +3,7 @@
 {
   imports =
     [
-      ./frontend.nix
       ./hardware-configuration.nix
-      ./speedtest.nix
       ../modules/common.nix
       ../modules/monitoring.nix
       ../modules/network.nix
@@ -20,6 +18,6 @@
 
   system.stateVersion = "25.11";
 
-  vars.fqdn = "lab-rpi.2m.lt";
-  vars.hostname = "lab-rpi";
+  vars.fqdn = "lab-rpi3.2m.lt";
+  vars.hostname = "lab-rpi3";
 }

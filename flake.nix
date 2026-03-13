@@ -66,6 +66,19 @@
         ];
         specialArgs = inputs;
       };
+      lab-rpi3 = nixpkgs-patcher.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./lab-rpi3/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+          agenix.nixosModules.default
+        ];
+        specialArgs = inputs;
+      };
     };
     darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
