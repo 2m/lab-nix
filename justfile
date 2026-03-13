@@ -1,4 +1,6 @@
 
+current_hostname := `hostname -s`
+
 switch host system:
     ssh root@{{host}} -t 'nixos-rebuild switch --flake /etc/nixos#{{system}}'
 
@@ -23,3 +25,6 @@ dev-prep:
 
 encrypt secret:
     cd secrets; env EDITOR=hx agenix -e {{secret}}.age
+
+darwin-rebuild system=current_hostname:
+    sudo darwin-rebuild switch --flake ./#{{system}}

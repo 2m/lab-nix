@@ -2,6 +2,8 @@
   description = "2m systems NixOS configuration";
 
   inputs = {
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
@@ -9,6 +11,9 @@
     #   url = "https://github.com/NixOS/nixpkgs/pull/423867.diff";
     #   flake = false;
     # };
+
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,6 +31,8 @@
     netalertx.url = "github:netalertx/NetAlertX?dir=install/nix";
 
     intel-gpu-exporter.url = "./flakes/intel-gpu-exporter";
+
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
   };
 
   outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
@@ -59,6 +66,24 @@
         ];
         specialArgs = inputs;
       };
+    };
+    darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+
+      modules = [
+        ./carla/configuration.nix
+        inputs.determinate.darwinModules.default
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
+        {
+          nixpkgs.overlays = [
+            inputs.alacritty-theme.overlays.default
+          ];
+        }
+      ];
     };
   };
 }
