@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./alsa-connect.nix
       ./hardware-configuration.nix
       ../modules/common.nix
       ../modules/monitoring.nix

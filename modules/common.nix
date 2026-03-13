@@ -12,6 +12,7 @@
     btop
     eza
     xh
+    helix
   ];
 
   programs = {
@@ -53,21 +54,14 @@
 
   users.defaultUserShell = pkgs.fish;
 
-  home-manager.users.root = { ... }: {
-    home.stateVersion = "25.11";
-
-    programs.helix = {
-      enable = true;
-    };
-  };
-
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     download-buffer-size = 524288000; # 500MB
   };
 
   # speedup system builds
-  documentation.man.generateCaches = false;
+  documentation.enable = false;
+  documentation.nixos.enable = false;
 
   swapDevices = [
     {
