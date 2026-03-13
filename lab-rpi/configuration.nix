@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./audio-link.nix
       ./frontend.nix
       ./hardware-configuration.nix
       ./speedtest.nix

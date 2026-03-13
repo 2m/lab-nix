@@ -150,6 +150,10 @@
                 y = 2;
               };
             };
+            selection = {
+              save_to_clipboard = false;
+              semantic_escape_chars = ",│`|:\"' ()[]{}<>";
+            };
             keyboard = {
               bindings = [
                 {

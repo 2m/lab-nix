@@ -286,6 +286,24 @@
         "type": "github"
       }
     },
+    "musnix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1773185476,
+        "narHash": "sha256-COuJkFg669oalmEN3T61gD3gM9SfUsiGvDS9pCOphZY=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "739e2a1f94c87d5f4c8b880a12480185cf0d7620",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
     "netalertx": {
       "locked": {
         "dir": "install/nix",
@@ -500,6 +518,22 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1772198003,
+        "narHash": "sha256-I45esRSssFtJ8p/gLHUZ1OUaaTaVLluNkABkk6arQwE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dd9b079222d43e1943b6ebd802f04fd959dc8e61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1769789167,
         "narHash": "sha256-kKB3bqYJU5nzYeIROI82Ef9VtTbu4uA3YydSk/Bioa8=",
         "owner": "NixOS",
@@ -522,9 +556,10 @@
         "home-manager": "home-manager_2",
         "intel-gpu-exporter": "intel-gpu-exporter",
         "jellarr": "jellarr",
+        "musnix": "musnix",
         "netalertx": "netalertx",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "nixpkgs-patcher": "nixpkgs-patcher"
       }
     },

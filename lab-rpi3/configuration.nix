@@ -5,6 +5,7 @@
     [
       ./alsa-connect.nix
       ./hardware-configuration.nix
+      ./remote-build.nix
       ../modules/common.nix
       ../modules/monitoring.nix
       ../modules/network.nix

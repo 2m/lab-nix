@@ -33,6 +33,8 @@
     intel-gpu-exporter.url = "./flakes/intel-gpu-exporter";
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+
+    musnix.url = "github:musnix/musnix";
   };
 
   outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
@@ -69,6 +71,7 @@
       lab-rpi3 = nixpkgs-patcher.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
+          inputs.musnix.nixosModules.musnix
           ./lab-rpi3/configuration.nix
         ];
         specialArgs = inputs;

@@ -1,8 +1,8 @@
 
 current_hostname := `hostname -s`
 
-switch host system:
-    ssh root@{{host}} -t 'nixos-rebuild switch --flake /etc/nixos#{{system}}'
+switch host system args="":
+    ssh root@{{host}} -t 'nixos-rebuild switch --flake /etc/nixos#{{system}} {{args}}'
 
 repl host system:
     ssh root@{{host}} -t 'nixos-rebuild repl --flake /etc/nixos#{{system}}'
@@ -10,10 +10,10 @@ repl host system:
 build package:
     nix-build -E 'with import <nixpkgs> {}; callPackage ./{{package}}.nix {}'
 
-wip host system:
+wip host system args="":
     git ciaa
     git push {{system}} --force
-    just switch {{host}} {{system}}
+    just switch {{host}} {{system}} {{args}}
 
 cleanup host:
     ssh root@{{host}} -t 'nix-collect-garbage -d'
