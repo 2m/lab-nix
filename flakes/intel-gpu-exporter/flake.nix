@@ -1,7 +1,7 @@
 {
   description = "intel-gpu-exporter flake";
 
-  outputs = { self }: {
+  outputs = { ... }: {
     nixosModules.default = { config, lib, pkgs, ... }:
     with lib;
     let
