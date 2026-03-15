@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./alsa-connect.nix
       ./hardware-configuration.nix
       ./remote-build.nix
       ../modules/common.nix

@@ -4,10 +4,6 @@ let
   soundOut = "plughw:HPA4";
 in
 {
-  environment.systemPackages = with pkgs; [
-    usbutils
-  ];
-
   hardware.alsa.enable = true;
 
   systemd.services.alink = {
