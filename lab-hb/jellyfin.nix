@@ -70,6 +70,15 @@
               };
               name = "Movies";
             }
+            {
+              collectionType = "music";
+              libraryOptions = {
+                pathInfos = [
+                  {path = "/media/music/";}
+                ];
+              };
+              name = "Music";
+            }
           ];
         };
 
@@ -87,6 +96,15 @@
             enableHwEncoding = true;
           };
         };
+
+        plugins = [
+          {
+            name = "Open Subtitles";
+          }
+          {
+            name = "LrcLib Lyrics";
+          }
+        ];
 
         users = [
           {

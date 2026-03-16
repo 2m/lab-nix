@@ -25,6 +25,8 @@
   system = {
     primaryUser = "martynas";
     stateVersion = 6;
+
+    defaults.finder.ShowPathbar = true;
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
