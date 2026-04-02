@@ -103,6 +103,7 @@
       backendApiUrl = "https://nax-api.${config.vars.fqdn}:443";
     };
     intel-gpu-exporter.enable = true;
+    cook-cli.enable = true;
   };
 
   virtualisation.docker = {

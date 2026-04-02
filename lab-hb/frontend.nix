@@ -31,6 +31,8 @@
           <dd>Jackett</dd>
           <dt><a href='https://nax.${config.vars.fqdn}/'>https://nax.${config.vars.fqdn}/</a></dt>
           <dd>NetAlertX</dd>
+          <dt><a href='https://cook.${config.vars.fqdn}/'>https://cook.${config.vars.fqdn}/</a></dt>
+          <dd>Cook</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -85,6 +87,10 @@
     '';
     virtualHosts."${config.services.netalertx.backendApiUrl}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.netalertx.graphqlPort}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://cook.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.cook-cli.port}
       ${config.vars.tlsConfig}
     '';
   };
