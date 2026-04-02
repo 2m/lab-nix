@@ -124,99 +124,100 @@
   users.users.martynas.home = "/Users/martynas";
 
   home-manager = {
-    users.martynas = { pkgs, ... }: {
-      imports = [
-        ../home-manager
-      ];
+    users.martynas =
+      { pkgs, ... }:
+      {
+        imports = [
+          ../home-manager
+        ];
 
-      programs = {
-        alacritty = {
-          enable = true;
-          settings = {
-            general.import = with pkgs; [ alacritty-theme.gruvbox_dark ];
-            terminal = {
-              shell = {
-                program = ''${pkgs.fish}/bin/fish'';
+        programs = {
+          alacritty = {
+            enable = true;
+            settings = {
+              general.import = with pkgs; [ alacritty-theme.gruvbox_dark ];
+              terminal = {
+                shell = {
+                  program = "${pkgs.fish}/bin/fish";
+                };
               };
-            };
-            font = {
-              size = 13;
-              normal = {
-                family = "FiraCode Nerd Font";
+              font = {
+                size = 13;
+                normal = {
+                  family = "FiraCode Nerd Font";
+                };
               };
-            };
-            window = {
-              decorations = "none";
-              padding = {
-                x = 2;
-                y = 2;
+              window = {
+                decorations = "none";
+                padding = {
+                  x = 2;
+                  y = 2;
+                };
               };
-            };
-            selection = {
-              save_to_clipboard = false;
-              semantic_escape_chars = ",│`|:\"' ()[]{}<>";
-            };
-            keyboard = {
-              bindings = [
-                {
-                  action = "Paste";
-                  key = "V";
-                  mods = "Command|Shift";
-                }
-                {
-                  action = "Copy";
-                  key = "C";
-                  mods = "Command|Shift";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0001" '';
-                  key = "A";
-                  mods = "Command";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0003" '';
-                  key = "C";
-                  mods = "Command";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0004" '';
-                  key = "D";
-                  mods = "Command";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0005" '';
-                  key = "E";
-                  mods = "Command";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0015" '';
-                  key = "U";
-                  mods = "Command";
-                }
-                {
-                  chars = builtins.fromJSON '' "\u0017" '';
-                  key = "W";
-                  mods = "Command";
-                }
-              ];
+              selection = {
+                save_to_clipboard = false;
+                semantic_escape_chars = ",│`|:\"' ()[]{}<>";
+              };
+              keyboard = {
+                bindings = [
+                  {
+                    action = "Paste";
+                    key = "V";
+                    mods = "Command|Shift";
+                  }
+                  {
+                    action = "Copy";
+                    key = "C";
+                    mods = "Command|Shift";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0001" '';
+                    key = "A";
+                    mods = "Command";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0003" '';
+                    key = "C";
+                    mods = "Command";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0004" '';
+                    key = "D";
+                    mods = "Command";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0005" '';
+                    key = "E";
+                    mods = "Command";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0015" '';
+                    key = "U";
+                    mods = "Command";
+                  }
+                  {
+                    chars = builtins.fromJSON ''"\u0017" '';
+                    key = "W";
+                    mods = "Command";
+                  }
+                ];
+              };
             };
           };
         };
-      };
 
-      home = {
-        packages = with pkgs; [
-          metals
-        ];
+        home = {
+          packages = with pkgs; [
+            metals
+          ];
 
-        username = "martynas";
-        homeDirectory = "/Users/martynas";
-        # The state version is required and should stay at the version you originally installed.
-        stateVersion = "25.11";
+          username = "martynas";
+          homeDirectory = "/Users/martynas";
+          # The state version is required and should stay at the version you originally installed.
+          stateVersion = "25.11";
+        };
       };
-    };
 
     backupFileExtension = "before-home-manager";
   };
 }
-

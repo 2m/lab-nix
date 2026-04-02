@@ -3,7 +3,7 @@
   ...
 }:
 let
-  fontSize = 13;
+  fontSize = 12;
   fontWeight = 400;
 in
 {
@@ -43,6 +43,10 @@ in
           font_family = "FiraCode Nerd Font Mono";
           font_size = fontSize;
           max_scroll_history_lines = 16384;
+        };
+        theme = {
+          mode = "dark";
+          dark = "Gruvbox Dark Soft";
         };
       };
     };
