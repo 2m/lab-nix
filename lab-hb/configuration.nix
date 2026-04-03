@@ -124,7 +124,10 @@
     };
   };
 
-  users.users.syncthing.extraGroups = [ "users" ];
+  users.users = {
+    # so syncthing can access cook-cli data dir
+    syncthing.extraGroups = [ "users" ];
+  };
 
   virtualisation.docker = {
     enable = true;
