@@ -1,9 +1,16 @@
 {
   pkgs,
+  config,
   ...
 }:
 
 {
+  age.secrets.grafana_secret_key = {
+    file = ../secrets/grafana_secret_key.age;
+    owner = "grafana";
+    group = "grafana";
+  };
+
   services.grafana = {
     enable = true;
     settings = {
@@ -13,6 +20,7 @@
         enable_gzip = true;
       };
       analytics.reporting_enabled = false;
+      security.secret_key = "$__file{${config.age.secrets.grafana_secret_key.path}}";
     };
 
     provision = {

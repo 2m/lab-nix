@@ -34,4 +34,8 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "grafana_secret_key.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }

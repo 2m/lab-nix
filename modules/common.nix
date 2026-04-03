@@ -64,7 +64,7 @@
   documentation.nixos.enable = false;
 
   # fish enables man caches, disable it
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   swapDevices = [
     {
