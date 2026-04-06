@@ -28,8 +28,6 @@
 
     jellarr.url = "github:venkyr77/jellarr";
 
-    netalertx.url = "github:netalertx/NetAlertX?dir=install/nix";
-
     intel-gpu-exporter.url = "./flakes/intel-gpu-exporter";
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
@@ -37,7 +35,7 @@
     musnix.url = "github:musnix/musnix";
   };
 
-  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, netalertx, ...}@inputs: {
+  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, ...}@inputs: {
     nixosConfigurations = {
       lab-hb = nixpkgs-patcher.lib.nixosSystem {
         system = "x86_64-linux";
@@ -50,7 +48,6 @@
           }
           agenix.nixosModules.default
           jellarr.nixosModules.default
-          netalertx.nixosModules.default
           inputs.intel-gpu-exporter.nixosModules.default
         ];
         specialArgs = inputs;
