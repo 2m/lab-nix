@@ -104,29 +104,6 @@
     };
     intel-gpu-exporter.enable = true;
     cook-cli.enable = true;
-    syncthing = {
-      enable = true;
-
-      # when default 127.0.0.1 is used, syncthing gui shows "Host check error"
-      guiAddress = "0.0.0.0:8384";
-
-      settings = {
-        devices = {
-          "carla" = { id = "N66XTE4-DOVHGQQ-5T67FG3-X3N7S3Q-VOBNHUV-AK3PWHL-6G4HMKM-N2LJRAK"; };
-        };
-        folders = {
-          "cook" = {
-            path = "/var/lib/cook-cli";
-            devices = [ "carla" ];
-          };
-        };
-      };
-    };
-  };
-
-  users.users = {
-    # so syncthing can access cook-cli data dir
-    syncthing.extraGroups = [ "users" ];
   };
 
   virtualisation.docker = {
