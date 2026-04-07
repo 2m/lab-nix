@@ -28,7 +28,11 @@
 
     jellarr.url = "github:venkyr77/jellarr";
 
-    intel-gpu-exporter.url = "./flakes/intel-gpu-exporter";
+    intel-gpu-exporter = {
+      url = "./flakes/intel-gpu-exporter";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 

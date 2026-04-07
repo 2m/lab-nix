@@ -48,7 +48,81 @@ in
           mode = "dark";
           dark = "Gruvbox Dark Soft";
         };
+        autosave = "on_focus_change";
       };
+      userKeymaps =
+        # control characters from https://en.wikipedia.org/wiki/ASCII#ASCII_control_characters
+        let
+          chars = [
+            "a"
+            "c"
+            "d"
+            "e"
+            "u"
+            "w"
+          ];
+          bindings = builtins.listToAttrs (
+            map (char: {
+              name = "cmd-${char}";
+              value = [
+                "terminal::SendKeystroke"
+                "ctrl-${char}"
+              ];
+            }) chars
+          );
+        in
+        [
+          {
+            context = "Terminal";
+            inherit bindings;
+          }
+          # navigation across history
+          {
+            context = "Editor";
+            bindings = {
+              "cmd-[" = "pane::GoBack";
+              "cmd-]" = "pane::GoForward";
+            };
+          }
+          # moving/selecting words with command+arrows
+          {
+            context = "Editor";
+            bindings = {
+              "cmd-right" = "editor::MoveToNextWordEnd";
+              "cmd-left" = "editor::MoveToPreviousWordStart";
+              "cmd-shift-right" = "editor::SelectToNextWordEnd";
+              "cmd-shift-left" = "editor::SelectToPreviousWordStart";
+            };
+          }
+          {
+            context = "Terminal";
+            bindings = {
+              "cmd-right" = [
+                "terminal::SendKeystroke"
+                "alt-right"
+              ];
+              "cmd-left" = [
+                "terminal::SendKeystroke"
+                "alt-left"
+              ];
+            };
+          }
+          # copy/paste from/into terminal with shift as well
+          {
+            context = "Terminal";
+            bindings = {
+              "cmd-shift-c" = "terminal::Copy";
+              "cmd-shift-v" = "terminal::Paste";
+            };
+          }
+          # toggle focus between editor and terminal
+          {
+            context = "Editor";
+            bindings = {
+              "cmd-`" = "terminal_panel::ToggleFocus";
+            };
+          }
+        ];
     };
   };
 }
