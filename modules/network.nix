@@ -30,7 +30,10 @@
   networking = {
     hostName = config.vars.hostname;
     networkmanager.enable = true;
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
 
     firewall = {
       enable = true;

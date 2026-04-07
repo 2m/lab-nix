@@ -1,17 +1,16 @@
 { ... }:
 
 {
-  imports =
-    [
-      ./audio-link.nix
-      ./frontend.nix
-      ./hardware-configuration.nix
-      ./speedtest.nix
-      ../modules/common.nix
-      ../modules/monitoring.nix
-      ../modules/network.nix
-      ../modules/vars.nix
-    ];
+  imports = [
+    ./audio-link.nix
+    ./frontend.nix
+    ./hardware-configuration.nix
+    ./speedtest.nix
+    ../modules/common.nix
+    ../modules/monitoring.nix
+    ../modules/network.nix
+    ../modules/vars.nix
+  ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;

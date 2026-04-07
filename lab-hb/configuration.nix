@@ -28,14 +28,28 @@
       enable = true;
       ssh = {
         enable = true;
-        port = 2222;  # Use a separate port to prevent conflict in your known hosts
+        port = 2222; # Use a separate port to prevent conflict in your known hosts
         hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
         shell = "/bin/cryptsetup-askpass";
       };
     };
-    availableKernelModules = [ "r8152" "usbnet" "cdc_ether" "xhci_pci" "ehci_pci" "uhci_hcd" ];
-    kernelModules = [ "r8152" "usbnet" "cdc_ether" "xhci_pci" "ehci_pci" "uhci_hcd" ];
+    availableKernelModules = [
+      "r8152"
+      "usbnet"
+      "cdc_ether"
+      "xhci_pci"
+      "ehci_pci"
+      "uhci_hcd"
+    ];
+    kernelModules = [
+      "r8152"
+      "usbnet"
+      "cdc_ether"
+      "xhci_pci"
+      "ehci_pci"
+      "uhci_hcd"
+    ];
   };
 
   vars.fqdn = "lab.2m.lt";
@@ -106,7 +120,7 @@
     storageDriver = "btrfs";
     autoPrune = {
       enable = true;
-      flags = ["--all"];
+      flags = [ "--all" ];
     };
   };
 
@@ -139,4 +153,3 @@
     };
   };
 }
-

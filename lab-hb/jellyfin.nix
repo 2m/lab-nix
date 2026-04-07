@@ -18,7 +18,9 @@
     ];
   };
 
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   services = {
     jellyfin = {
@@ -65,7 +67,7 @@
               collectionType = "movies";
               libraryOptions = {
                 pathInfos = [
-                  {path = "/media/movies/";}
+                  { path = "/media/movies/"; }
                 ];
               };
               name = "Movies";
@@ -74,7 +76,7 @@
               collectionType = "music";
               libraryOptions = {
                 pathInfos = [
-                  {path = "/media/music/";}
+                  { path = "/media/music/"; }
                 ];
               };
               name = "Music";

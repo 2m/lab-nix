@@ -1,15 +1,14 @@
 { ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./remote-build.nix
-      ../modules/common.nix
-      ../modules/monitoring.nix
-      ../modules/network.nix
-      ../modules/vars.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./remote-build.nix
+    ../modules/common.nix
+    ../modules/monitoring.nix
+    ../modules/network.nix
+    ../modules/vars.nix
+  ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;

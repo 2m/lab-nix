@@ -22,7 +22,10 @@
         hostName = "eu.nixbuild.net";
         system = "aarch64-linux";
         maxJobs = 100;
-        supportedFeatures = [ "benchmark" "big-parallel" ];
+        supportedFeatures = [
+          "benchmark"
+          "big-parallel"
+        ];
       }
     ];
   };

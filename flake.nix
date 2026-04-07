@@ -33,64 +33,79 @@
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     musnix.url = "github:musnix/musnix";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { nixpkgs-patcher, home-manager, agenix, jellarr, ...}@inputs: {
-    nixosConfigurations = {
-      lab-hb = nixpkgs-patcher.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./lab-hb/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          agenix.nixosModules.default
-          jellarr.nixosModules.default
-          inputs.intel-gpu-exporter.nixosModules.default
-        ];
-        specialArgs = inputs;
-      };
-      lab-rpi = nixpkgs-patcher.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          ./lab-rpi/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          agenix.nixosModules.default
-        ];
-        specialArgs = inputs;
-      };
-      lab-rpi3 = nixpkgs-patcher.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          inputs.musnix.nixosModules.musnix
-          ./lab-rpi3/configuration.nix
-        ];
-        specialArgs = inputs;
-      };
-    };
-    darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+  outputs =
+    {
+      nixpkgs-patcher,
+      home-manager,
+      agenix,
+      jellarr,
+      ...
+    }@inputs:
+    {
 
-      modules = [
-        ./carla/configuration.nix
-        inputs.determinate.darwinModules.default
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-        {
-          nixpkgs.overlays = [
-            inputs.alacritty-theme.overlays.default
+      nixosConfigurations = {
+        lab-hb = nixpkgs-patcher.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./lab-hb/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            agenix.nixosModules.default
+            jellarr.nixosModules.default
+            inputs.intel-gpu-exporter.nixosModules.default
           ];
-        }
-      ];
-    };
-  };
+          specialArgs = inputs;
+        };
+        lab-rpi = nixpkgs-patcher.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./lab-rpi/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            agenix.nixosModules.default
+          ];
+          specialArgs = inputs;
+        };
+        lab-rpi3 = nixpkgs-patcher.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            inputs.musnix.nixosModules.musnix
+            ./lab-rpi3/configuration.nix
+          ];
+          specialArgs = inputs;
+        };
+      };
+
+      darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+
+        modules = [
+          ./carla/configuration.nix
+          inputs.determinate.darwinModules.default
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+          {
+            nixpkgs.overlays = [
+              inputs.alacritty-theme.overlays.default
+            ];
+          }
+        ];
+      };
+    }
+    // inputs.flake-utils.lib.eachDefaultSystem (system: {
+      formatter = inputs.nixpkgs.legacyPackages.${system}.nixfmt-tree;
+    });
 }

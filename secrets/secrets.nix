@@ -15,7 +15,10 @@ in
     armor = true;
   };
   "cloudflare_token.age" = {
-    publicKeys = users ++ [ lab-hb lab-rpi ];
+    publicKeys = users ++ [
+      lab-hb
+      lab-rpi
+    ];
     armor = true;
   };
   "qbittorrent.age" = {

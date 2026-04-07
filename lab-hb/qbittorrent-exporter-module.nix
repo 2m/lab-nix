@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -10,7 +15,8 @@ let
   };
 
   finalEnvironment = defaultEnvironment // cfg.environment;
-in {
+in
+{
   options.services.qbittorrent-exporter = {
     enable = mkEnableOption "qbittorrent-exporter";
 
