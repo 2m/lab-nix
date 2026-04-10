@@ -26,7 +26,10 @@
     primaryUser = "martynas";
     stateVersion = 6;
 
-    defaults.finder.ShowPathbar = true;
+    defaults = {
+      finder.ShowPathbar = true;
+      dock.wvous-br-corner = 1; # disables hot bottom-right corner
+    };
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -207,10 +210,6 @@
         };
 
         home = {
-          packages = with pkgs; [
-            metals
-          ];
-
           username = "martynas";
           homeDirectory = "/Users/martynas";
           # The state version is required and should stay at the version you originally installed.

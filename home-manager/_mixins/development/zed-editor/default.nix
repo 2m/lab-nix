@@ -5,6 +5,8 @@
 let
   fontSize = 12;
   fontWeight = 400;
+
+  uiFontSize = 16;
 in
 {
   programs = {
@@ -18,7 +20,6 @@ in
         "ini"
         "make"
         "rainbow-csv"
-        "scala"
         "xml"
       ];
       userSettings = {
@@ -26,6 +27,7 @@ in
         buffer_font_family = "FiraCode Nerd Font Mono";
         buffer_font_size = fontSize;
         buffer_font_weight = fontWeight;
+        ui_font_size = uiFontSize;
         colorize_brackets = true;
         tabs = {
           file_icons = true;
@@ -38,8 +40,8 @@ in
           shell = {
             program = "${pkgs.fish}/bin/fish";
           };
-          blinking = "on";
-          copy_on_select = true;
+          blinking = "off";
+          copy_on_select = false;
           font_family = "FiraCode Nerd Font Mono";
           font_size = fontSize;
           max_scroll_history_lines = 16384;
@@ -47,6 +49,15 @@ in
         theme = {
           mode = "dark";
           dark = "Gruvbox Dark Soft";
+          light = "Gruvbox Light Hard";
+        };
+        icon_theme = {
+          mode = "dark";
+          light = "Zed (default)";
+          dark = "Zed (default)";
+        };
+        edit_predictions = {
+          mode = "subtle";
         };
         autosave = "on_focus_change";
       };
