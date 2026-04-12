@@ -27,8 +27,23 @@
     stateVersion = 6;
 
     defaults = {
-      finder.ShowPathbar = true;
-      dock.wvous-br-corner = 1; # disables hot bottom-right corner
+      finder = {
+        NewWindowTarget = "Other";
+        NewWindowTargetPath = "file:///Users/martynas/Downloads";
+        ShowPathbar = true;
+      };
+      dock = {
+        wvous-br-corner = 1; # disables hot bottom-right corner
+        orientation = "right";
+        mru-spaces = false;
+        persistent-apps = [ ];
+        persistent-others = [ ];
+      };
+      hitoolbox.AppleFnUsageType = "Do Nothing";
+      NSGlobalDomain = {
+        AppleEnableSwipeNavigateWithScrolls = false; # disable two-finger swipe to navigate back/forward
+        ApplePressAndHoldEnabled = false;
+      };
     };
   };
 
