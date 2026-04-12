@@ -45,6 +45,11 @@
         ApplePressAndHoldEnabled = false;
       };
     };
+
+    activationScripts.postActivation.text = ''
+      echo "Kickstarting yabai scripting addition, so it runs on the new dock." >&2
+      launchctl kickstart -k system/org.nixos.yabai-sa
+    '';
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
