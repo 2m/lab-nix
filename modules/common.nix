@@ -34,6 +34,24 @@
 
         core.editor = "hx";
 
+        tag.sort = "version:refname";
+        diff = {
+          algorithm = "histogram";
+          colorMoved = "plain";
+          mnemonicPrefix = true;
+          renames = true;
+        };
+
+        push.autoSetupRemote = true;
+
+        fetch = {
+          prune = true;
+          pruneTags = true;
+          all = true;
+        };
+
+        merge.conflictstyle = "zdiff3";
+
         alias = {
           st = "status -sb";
           cia = "commit -a -m";

@@ -158,6 +158,10 @@
           ../home-manager
         ];
 
+        services = {
+          ssh-agent.enable = true;
+        };
+
         programs = {
           alacritty = {
             enable = true;
