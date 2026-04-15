@@ -48,6 +48,10 @@
 
     activationScripts.postActivation.text = ''
       echo "Kickstarting yabai scripting addition, so it runs on the new dock." >&2
+      while ! pgrep -x Dock > /dev/null; do
+        sleep 0.5
+      done
+      sleep 1  # give Dock a moment to fully initialize
       launchctl kickstart -k system/org.nixos.yabai-sa
     '';
   };
