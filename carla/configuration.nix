@@ -97,7 +97,8 @@
         ctrl - return : open -n -a ${pkgs.alacritty}/Applications/Alacritty.app
 
         # open project
-        ctrl - p : ls ~/projects/ | ${pkgs.choose-gui}/bin/choose | xargs -I % echo ~/projects/% | xargs ${pkgs.zed-editor}/bin/zeditor
+        ctrl - p : ls ~/projects/ | ${pkgs.choose-gui}/bin/choose -p "open in vs code" | xargs -I % echo ~/projects/% | xargs /opt/homebrew/bin/code
+        ctrl + shift - p : ls ~/projects/ | ${pkgs.choose-gui}/bin/choose -p "open in zed" | xargs -I % echo ~/projects/% | xargs ${pkgs.zed-editor}/bin/zeditor
 
         # copy gpg passphrase to clipboard
         ctrl - g : fish -c "op read op://gpg/carla/notesPlain | pbcopy"
