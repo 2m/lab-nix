@@ -15,7 +15,9 @@
       settings = {
         user.name = "Martynas Mickevičius";
         user.email = "self@2m.lt";
+
         user.signingkey = "CBA412CC";
+        commit.gpgsign = true;
 
         init.defaultBranch = "main";
 
