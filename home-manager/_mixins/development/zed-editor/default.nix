@@ -1,5 +1,7 @@
 {
   pkgs,
+  config,
+  lib,
   ...
 }:
 let
@@ -10,7 +12,7 @@ let
 in
 {
   programs = {
-    zed-editor = {
+    zed-editor = lib.mkIf config.vars.is.workstation {
       enable = true;
       extensions = [
         "comment"

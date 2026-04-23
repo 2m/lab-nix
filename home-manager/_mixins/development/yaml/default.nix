@@ -6,10 +6,14 @@
 }:
 {
   home = {
-    packages = with pkgs; [
-      yaml-language-server
-      yq-go # Terminal `jq` for YAML
-    ];
+    packages =
+      with pkgs;
+      [
+        yq-go # Terminal `jq` for YAML
+      ]
+      ++ lib.optionals config.programs.zed-editor.enable [
+        yaml-language-server
+      ];
   };
 
   programs = {

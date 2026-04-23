@@ -20,4 +20,5 @@
 
   vars.fqdn = "lab-rpi3.2m.lt";
   vars.hostname = "lab-rpi3";
+  vars.kind = "server";
 }

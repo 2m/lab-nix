@@ -6,14 +6,19 @@
 }:
 {
   home = {
-    packages = with pkgs; [
-      deadnix
-      nixd
-      nix-diff
-      nixfmt
-      nixfmt-tree
-      statix
-    ];
+    packages =
+      with pkgs;
+      [
+
+      ]
+      ++ lib.optionals config.programs.zed-editor.enable [
+        deadnix
+        nixd
+        nix-diff
+        nixfmt
+        nixfmt-tree
+        statix
+      ];
   };
 
   programs = {

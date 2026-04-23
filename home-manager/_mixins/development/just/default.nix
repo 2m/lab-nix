@@ -6,12 +6,15 @@
 }:
 {
   home = {
-    # Packages that are used by some of the extensions below
-    packages = with pkgs; [
-      just
-      just-formatter
-      just-lsp
-    ];
+    packages =
+      with pkgs;
+      [
+        just
+      ]
+      ++ lib.optionals config.programs.zed-editor.enable [
+        just-formatter
+        just-lsp
+      ];
   };
 
   programs = {

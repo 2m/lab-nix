@@ -92,7 +92,6 @@
 
       darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-
         modules = [
           ./carla/configuration.nix
           inputs.determinate.darwinModules.default
@@ -107,6 +106,7 @@
             ];
           }
         ];
+        specialArgs = inputs;
       };
     }
     // inputs.flake-utils.lib.eachDefaultSystem (system: {

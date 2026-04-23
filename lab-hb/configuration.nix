@@ -12,7 +12,7 @@
     ../modules/common.nix
     ../modules/monitoring.nix
     ../modules/network.nix
-    ../modules/vars.nix
+    ./vars.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -51,9 +51,6 @@
       "uhci_hcd"
     ];
   };
-
-  vars.fqdn = "lab.2m.lt";
-  vars.hostname = "lab-hb";
 
   networking = {
     firewall = {
@@ -151,5 +148,30 @@
         RandomizedDelaySec = "5h";
       };
     };
+  };
+
+  users.users.${config.vars.username} = {
+    isNormalUser = true;
+    openssh.authorizedKeys.keys = config.vars.authorizedKeys;
+  };
+
+  home-manager = {
+    users."${config.vars.username}" =
+      { ... }:
+      {
+        imports = [
+          ./vars.nix
+          ../home-manager
+        ];
+
+        home = {
+          username = config.vars.username;
+          homeDirectory = "/home/${config.vars.username}";
+          # The state version is required and should stay at the version you originally installed.
+          stateVersion = "25.11";
+        };
+      };
+
+    backupFileExtension = "before-home-manager";
   };
 }

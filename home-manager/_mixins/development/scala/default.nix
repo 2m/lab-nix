@@ -6,10 +6,14 @@
 }:
 {
   home = {
-    packages = with pkgs; [
-      metals
-      scala-cli
-    ];
+    packages =
+      with pkgs;
+      [
+        scala-cli
+      ]
+      ++ lib.optionals config.programs.zed-editor.enable [
+        metals
+      ];
   };
 
   programs = {
