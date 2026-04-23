@@ -12,7 +12,6 @@
     btop
     eza
     xh
-    helix
   ];
 
   programs = {
@@ -22,50 +21,6 @@
         nix-shell = "nix-shell --command fish";
         l = "exa -bghl --sort newest --git";
         la = "l -a";
-      };
-    };
-    git = {
-      enable = true;
-      config = {
-        user.name = "Martynas Mickevičius";
-        user.email = "self@2m.lt";
-
-        init.defaultBranch = "main";
-
-        core.editor = "hx";
-
-        tag.sort = "version:refname";
-        diff = {
-          algorithm = "histogram";
-          colorMoved = "plain";
-          mnemonicPrefix = true;
-          renames = true;
-        };
-
-        push.autoSetupRemote = true;
-
-        fetch = {
-          prune = true;
-          pruneTags = true;
-          all = true;
-        };
-
-        merge.conflictstyle = "zdiff3";
-
-        alias = {
-          st = "status -sb";
-          cia = "commit -a -m";
-          co = "checkout";
-          lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-          lola = "lol --all";
-          # rebase interactively all commits from the fork point of the given branch
-          rbi = "!sh -c \"git rebase -i `git merge-base $1 HEAD`\" -";
-          # same as rbi but also rebase on top of the given branch
-          rbo = "!sh -c \"git rebase -i --onto $1 `git merge-base $1 HEAD`\" -";
-          # shows branches ordered by latest worked at
-          # https://gist.github.com/jroper/4c4415e853ef5696f7e4c135e20e4d17
-          br = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'";
-        };
       };
     };
   };
