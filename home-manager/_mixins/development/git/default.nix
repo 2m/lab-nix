@@ -1,5 +1,7 @@
 {
   pkgs,
+  lib,
+  config,
   ...
 }:
 {
@@ -15,9 +17,6 @@
       settings = {
         user.name = "Martynas Mickevičius";
         user.email = "self@2m.lt";
-
-        user.signingkey = "CBA412CC";
-        commit.gpgsign = true;
 
         init.defaultBranch = "main";
 
@@ -56,6 +55,11 @@
           # https://gist.github.com/jroper/4c4415e853ef5696f7e4c135e20e4d17
           br = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'";
         };
+      }
+      // lib.attrsets.optionalAttrs config.vars.is.workstation {
+        # only enable gpg commit signing on workstation as gpg keys are only there
+        user.signingkey = "CBA412CC";
+        commit.gpgsign = true;
       };
     };
   };
