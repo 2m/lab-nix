@@ -4,6 +4,7 @@
   time.timeZone = "Europe/Vilnius";
 
   environment.systemPackages = with pkgs; [
+    git # for pushing new nixos config
     wget
     jq
     bc
@@ -13,8 +14,6 @@
     eza
     xh
   ];
-
-  users.defaultUserShell = pkgs.fish;
 
   nix.settings = {
     experimental-features = [

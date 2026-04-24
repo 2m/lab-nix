@@ -13,6 +13,7 @@
     ../modules/monitoring.nix
     ../modules/network.nix
     ./vars.nix
+    ../nixos
   ];
 
   # Use the systemd-boot EFI boot loader.
