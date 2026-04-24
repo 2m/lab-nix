@@ -12,4 +12,10 @@
       type = lib.types.package;
     };
   };
+
+  options.security.sudo = {
+    wheelNeedsPassword = lib.mkOption {
+      type = lib.types.bool;
+    };
+  };
 }

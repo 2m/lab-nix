@@ -17,6 +17,9 @@
         l = "eza -bghl --sort newest --git";
         la = "l -a";
       };
+      shellInit = ''
+        export GPG_TTY="$(tty)"
+      '';
     };
   };
 }
