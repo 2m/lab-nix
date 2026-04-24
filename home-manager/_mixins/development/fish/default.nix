@@ -20,6 +20,12 @@
       shellInit = ''
         export GPG_TTY="$(tty)"
       '';
+      plugins = [
+        {
+          name = "grc";
+          src = pkgs.fishPlugins.grc.src;
+        }
+      ];
     };
   };
 }
