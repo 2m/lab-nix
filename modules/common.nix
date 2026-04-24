@@ -11,7 +11,6 @@
     bat
     dua
     btop
-    eza
     xh
   ];
 
