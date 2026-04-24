@@ -154,6 +154,9 @@
   users.users.${config.vars.username} = {
     isNormalUser = true;
     openssh.authorizedKeys.keys = config.vars.authorizedKeys;
+    extraGroups = [
+      "wheel"
+    ];
   };
 
   home-manager = {

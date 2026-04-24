@@ -8,4 +8,6 @@
 
   # fish enables man caches, disable it
   documentation.man.enable = false;
+
+  security.sudo.wheelNeedsPassword = false;
 }
