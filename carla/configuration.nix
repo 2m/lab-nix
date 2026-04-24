@@ -3,6 +3,7 @@
 {
   imports = [
     ./vars.nix
+    ./nix-darwin-compatibility.nix
     ../nixos
   ];
 

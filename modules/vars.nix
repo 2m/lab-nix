@@ -25,6 +25,11 @@
       description = "Kind of this machine";
     };
 
+    platform = lib.mkOption {
+      type = lib.types.str;
+      description = "Architecture string (e.g. \"x86_64-linux\", \"aarch64-darwin\") of this machine";
+    };
+
     # --------------
     #  Derived vars
     # --------------
@@ -35,6 +40,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdOC8PgQg6ZZG51pdVRFoihpD9a9D3e4gQKmDB/JVmh carla-31-03-2023"
       ];
       description = "Authorized SSH keys for this machine";
+      readOnly = true;
     };
 
     tlsConfig = lib.mkOption {
@@ -45,6 +51,17 @@
         }
       '';
       description = "TLS config to be used for Caddy virtual hosts";
+      readOnly = true;
+    };
+
+    os = lib.mkOption {
+      type = lib.types.enum [
+        "linux"
+        "darwin"
+      ];
+      default = if lib.hasSuffix "-linux" config.vars.platform then "linux" else "darwin";
+      description = "OS of this machine, derived from platform. Never set manually.";
+      readOnly = true;
     };
 
     is = {
@@ -52,12 +69,28 @@
         type = lib.types.bool;
         default = config.vars.kind == "server";
         description = "Whether this machine is a server";
+        readOnly = true;
       };
 
       workstation = lib.mkOption {
         type = lib.types.bool;
         default = config.vars.kind == "workstation";
         description = "Whether this machine is a workstation";
+        readOnly = true;
+      };
+
+      darwin = lib.mkOption {
+        type = lib.types.bool;
+        default = config.vars.os == "darwin";
+        description = "Whether this machine runs macOS (Darwin).";
+        readOnly = true;
+      };
+
+      linux = lib.mkOption {
+        type = lib.types.bool;
+        default = config.vars.os == "linux";
+        description = "Whether this machine runs Linux.";
+        readOnly = true;
       };
     };
   };

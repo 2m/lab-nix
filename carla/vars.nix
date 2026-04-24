@@ -8,4 +8,5 @@
   vars.hostname = "carla";
   vars.username = "martynas";
   vars.kind = "workstation";
+  vars.platform = "aarch64-darwin";
 }
