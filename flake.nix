@@ -60,6 +60,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [ agenix.homeManagerModules.default ];
             }
             agenix.nixosModules.default
             jellarr.nixosModules.default
@@ -99,6 +100,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.sharedModules = [ agenix.homeManagerModules.default ];
           }
           agenix.nixosModules.default
           {

@@ -3,7 +3,10 @@
   ...
 }:
 {
-  age.secrets.atuin_key.file = ../secrets/atuin_key.age;
+  age.secrets.atuin_key = {
+    file = ../../../../secrets/atuin_key.age;
+    path = "${config.home.homeDirectory}/.local/share/atuin/key";
+  };
 
   programs = {
     atuin = {
@@ -12,7 +15,6 @@
       flags = [ "--disable-up-arrow" ];
       settings = {
         auto_sync = true;
-        key_path = config.age.secrets.atuin_key.path;
         sync_frequency = "5m";
         update_check = false;
         sync.records = true;
