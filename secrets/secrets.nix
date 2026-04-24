@@ -4,6 +4,7 @@ let
 
   lab-hb = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAyfDdZO0WBxvQ++KK0KOAZlLFtwzsq96LH0WdKr6+Iy";
   lab-rpi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKf9pENEsef39webOu8x3/EdU9XW6iQgXSzQEG+ijTHc";
+  carla = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeSL7B5nsq/RTCq9AwuF1hwM35lhMgWi9sP39OaldUY";
 in
 {
   "restic_password.age" = {
@@ -39,6 +40,13 @@ in
   };
   "grafana_secret_key.age" = {
     publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
+  "atuin_key.age" = {
+    publicKeys = users ++ [
+      lab-hb
+      carla
+    ];
     armor = true;
   };
 }

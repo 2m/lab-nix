@@ -100,6 +100,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
           }
+          agenix.nixosModules.default
           {
             nixpkgs.overlays = [
               inputs.alacritty-theme.overlays.default

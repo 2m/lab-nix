@@ -3,6 +3,7 @@
 {
   imports = [
     ./vars.nix
+    ../nixos
   ];
 
   determinateNix = {

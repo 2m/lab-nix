@@ -7,13 +7,6 @@
   services = {
     tailscale.enable = true;
 
-    openssh = {
-      enable = true;
-      settings = {
-        AllowAgentForwarding = true;
-      };
-    };
-
     # publish and resolve *.local addresses
     avahi = {
       enable = true;
