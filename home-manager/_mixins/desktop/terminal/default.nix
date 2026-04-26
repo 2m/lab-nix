@@ -74,6 +74,29 @@
               key = "W";
               mods = "Command";
             }
+            # search back and forth through shell prompts
+            {
+              key = "Up";
+              mods = "Shift|Command";
+              action = "SearchBackward";
+            }
+            {
+              key = "Up";
+              mods = "Shift|Command";
+              mode = "Search";
+              chars = "${config.vars.promptChar}";
+            }
+            {
+              key = "Down";
+              mods = "Shift|Command";
+              action = "SearchForward";
+            }
+            {
+              key = "Down";
+              mods = "Shift|Command";
+              mode = "Search";
+              chars = "${config.vars.promptChar}";
+            }
           ];
         };
       };

@@ -54,6 +54,13 @@
       readOnly = true;
     };
 
+    promptChar = lib.mkOption {
+      type = lib.types.str;
+      default = "λ";
+      description = "Prompt character";
+      readOnly = true;
+    };
+
     os = lib.mkOption {
       type = lib.types.enum [
         "linux"
