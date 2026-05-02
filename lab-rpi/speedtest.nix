@@ -14,7 +14,7 @@ in
   services.caddy = {
     package = pkgs.caddy.withPlugins {
       plugins = [ "github.com/aksdb/caddy-cgi/v2@v2.2.7" ];
-      hash = "sha256-xj0Zs6fe2Efh6I28l89n1IqWVa5kR+jj+Xq/cIFFUuQ=";
+      hash = "sha256-aqpik9d8F5pHtvqAKWpdFz20BuYhsunean1boGnTbXs=";
     };
     virtualHosts."https://speedtest.${config.vars.fqdn}".extraConfig = ''
       route {

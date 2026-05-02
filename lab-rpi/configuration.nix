@@ -5,11 +5,13 @@
     ./audio-link.nix
     ./frontend.nix
     ./hardware-configuration.nix
+    ./monitoring.nix
     ./speedtest.nix
     ../modules/common.nix
     ../modules/monitoring.nix
     ../modules/network.nix
-    ../modules/vars.nix
+    ./vars.nix
+    ../nixos
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
@@ -19,8 +21,4 @@
   boot.loader.generic-extlinux-compatible.enable = true;
 
   system.stateVersion = "25.11";
-
-  vars.fqdn = "lab-rpi.2m.lt";
-  vars.hostname = "lab-rpi";
-  vars.kind = "server";
 }

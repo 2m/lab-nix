@@ -34,6 +34,12 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    mikrotik-exporter = {
+      url = "./flakes/mikrotik-exporter";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     musnix.url = "github:musnix/musnix";
@@ -78,6 +84,7 @@
               home-manager.useUserPackages = true;
             }
             agenix.nixosModules.default
+            inputs.mikrotik-exporter.nixosModules.default
           ];
           specialArgs = inputs;
         };

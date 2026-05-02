@@ -312,6 +312,25 @@
         "type": "github"
       }
     },
+    "mikrotik-exporter": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./flakes/mikrotik-exporter",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/mikrotik-exporter",
+        "type": "path"
+      },
+      "parent": []
+    },
     "musnix": {
       "inputs": {
         "nixpkgs": "nixpkgs_6"
@@ -566,6 +585,7 @@
         "home-manager": "home-manager_2",
         "intel-gpu-exporter": "intel-gpu-exporter",
         "jellarr": "jellarr",
+        "mikrotik-exporter": "mikrotik-exporter",
         "musnix": "musnix",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_7",

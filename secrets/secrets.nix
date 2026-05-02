@@ -49,4 +49,25 @@ in
     ];
     armor = true;
   };
+  "router_mktxp.age" = {
+    publicKeys = users ++ [
+      lab-rpi
+      carla
+    ];
+    armor = true;
+  };
+  "wifi_mktxp.age" = {
+    publicKeys = users ++ [
+      lab-rpi
+      carla
+    ];
+    armor = true;
+  };
+  "wifi_rafters_mktxp.age" = {
+    publicKeys = users ++ [
+      lab-rpi
+      carla
+    ];
+    armor = true;
+  };
 }
