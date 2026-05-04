@@ -9,7 +9,8 @@
     packages =
       with pkgs;
       [
-
+        nh
+        nix-tree
       ]
       ++ lib.optionals config.programs.zed-editor.enable [
         deadnix
