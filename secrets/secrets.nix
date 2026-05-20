@@ -70,4 +70,8 @@ in
     ];
     armor = true;
   };
+  "miniflux.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }

@@ -31,6 +31,8 @@
           <dd>Jackett</dd>
           <dt><a href='https://cook.${config.vars.fqdn}/'>https://cook.${config.vars.fqdn}/</a></dt>
           <dd>Cook</dd>
+          <dt><a href='https://rss.${config.vars.fqdn}/'>https://rss.${config.vars.fqdn}/</a></dt>
+          <dd>tt-rss feed reader</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -81,6 +83,10 @@
     '';
     virtualHosts."https://cook.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.cook-cli.port}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://rss.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:8280
       ${config.vars.tlsConfig}
     '';
   };

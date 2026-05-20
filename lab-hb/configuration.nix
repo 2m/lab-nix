@@ -67,6 +67,12 @@
     group = config.services.qbittorrent-exporter.group;
   };
 
+  age.secrets.miniflux = {
+    file = ../secrets/miniflux.age;
+    owner = "miniflux";
+    group = "miniflux";
+  };
+
   services = {
     thelounge.enable = true;
     calibre-web = {
@@ -111,6 +117,13 @@
     };
     intel-gpu-exporter.enable = true;
     cook-cli.enable = true;
+    miniflux = {
+      enable = true;
+      adminCredentialsFile = config.age.secrets.miniflux.path;
+      config = {
+        LISTEN_ADDR = "localhost:8280";
+      };
+    };
   };
 
   virtualisation.docker = {
