@@ -124,6 +124,9 @@
         LISTEN_ADDR = "localhost:8280";
       };
     };
+    betula = {
+      enable = true;
+    };
   };
 
   virtualisation.docker = {

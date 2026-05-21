@@ -33,6 +33,8 @@
           <dd>Cook</dd>
           <dt><a href='https://rss.${config.vars.fqdn}/'>https://rss.${config.vars.fqdn}/</a></dt>
           <dd>tt-rss feed reader</dd>
+          <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
+          <dd>web archiver</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -87,6 +89,10 @@
     '';
     virtualHosts."https://rss.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:8280
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.betula.port}
       ${config.vars.tlsConfig}
     '';
   };

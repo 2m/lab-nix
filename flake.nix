@@ -40,6 +40,12 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    betula-service = {
+      url = "./flakes/betula-service";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     musnix.url = "github:musnix/musnix";
@@ -71,6 +77,7 @@
             agenix.nixosModules.default
             jellarr.nixosModules.default
             inputs.intel-gpu-exporter.nixosModules.default
+            inputs.betula-service.nixosModules.default
           ];
           specialArgs = inputs;
         };
