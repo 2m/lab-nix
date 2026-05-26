@@ -51,6 +51,20 @@
     musnix.url = "github:musnix/musnix";
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vicinae.url = "github:vicinaehq/vicinae";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
@@ -89,7 +103,13 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ agenix.homeManagerModules.default ];
+              home-manager.sharedModules = [
+                agenix.homeManagerModules.default
+                inputs.niri.homeModules.niri
+                inputs.vicinae.homeManagerModules.default
+                inputs.noctalia.homeModules.default
+                inputs.nix-colors.homeManagerModules.default
+              ];
             }
             agenix.nixosModules.default
             {
