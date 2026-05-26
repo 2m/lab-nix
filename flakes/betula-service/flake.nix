@@ -50,7 +50,7 @@
 
             dataDir = mkOption {
               type = types.str;
-              default = "/var/lib/betula/";
+              default = "/var/lib/betula";
               description = "Path to the directory where betula will persist its state";
             };
 
