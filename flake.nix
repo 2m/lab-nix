@@ -81,6 +81,25 @@
           ];
           specialArgs = inputs;
         };
+        darwix = nixpkgs-patcher.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./darwix/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.sharedModules = [ agenix.homeManagerModules.default ];
+            }
+            agenix.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                inputs.alacritty-theme.overlays.default
+              ];
+            }
+          ];
+          specialArgs = inputs;
+        };
         lab-rpi = nixpkgs-patcher.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
