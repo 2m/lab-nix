@@ -160,6 +160,7 @@
         imports = [
           ./vars.nix
           ../home-manager
+          ../home-manager/nix-darwin-compatibility.nix
         ];
 
         home = {
