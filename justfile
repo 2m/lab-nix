@@ -22,3 +22,6 @@ encrypt secret:
 
 darwin-rebuild system=current_hostname:
     nh darwin switch . -H {{ system }}
+
+update:
+    nix flake update
