@@ -18,23 +18,23 @@
           <dt><a href='https://track.${config.vars.fqdn}/'>https://track.${config.vars.fqdn}/</a></dt>
           <dd>Location tracking</dd>
           <dt><a href='https://torrents.${config.vars.fqdn}/'>https://torrents.${config.vars.fqdn}/</a></dt>
-          <dd>Torrent Downloads</dd>
+          <dd>Torrents</dd>
           <dt><a href='https://jelly.${config.vars.fqdn}/'>https://jelly.${config.vars.fqdn}/</a></dt>
           <dd>Jellyfin</dd>
           <dt><a href='https://radarr.${config.vars.fqdn}/'>https://radarr.${config.vars.fqdn}/</a></dt>
-          <dd>Radarr</dd>
+          <dd>Movies</dd>
           <dt><a href='https://bazarr.${config.vars.fqdn}/'>https://bazarr.${config.vars.fqdn}/</a></dt>
-          <dd>bazarr</dd>
+          <dd>Subtitles</dd>
           <dt><a href='https://lidarr.${config.vars.fqdn}/'>https://lidarr.${config.vars.fqdn}/</a></dt>
-          <dd>lidarr</dd>
+          <dd>Music</dd>
           <dt><a href='https://jackett.${config.vars.fqdn}/'>https://jackett.${config.vars.fqdn}/</a></dt>
-          <dd>Jackett</dd>
+          <dd>Trackers</dd>
           <dt><a href='https://cook.${config.vars.fqdn}/'>https://cook.${config.vars.fqdn}/</a></dt>
-          <dd>Cook</dd>
+          <dd>Recipes</dd>
           <dt><a href='https://rss.${config.vars.fqdn}/'>https://rss.${config.vars.fqdn}/</a></dt>
-          <dd>tt-rss feed reader</dd>
+          <dd>RSS feeds</dd>
           <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
-          <dd>web archiver</dd>
+          <dd>Web archiver</dd>
         </dl>
       "
       ${config.vars.tlsConfig}

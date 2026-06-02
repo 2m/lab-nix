@@ -32,7 +32,7 @@
         port = 2222; # Use a separate port to prevent conflict in your known hosts
         hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
-        shell = "/bin/cryptsetup-askpass";
+        shell = "/bin/systemd-tty-ask-password-agent";
       };
     };
     availableKernelModules = [
