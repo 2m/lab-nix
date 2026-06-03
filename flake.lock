@@ -580,6 +580,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-cook-cli": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DqFc+HujZOBX3Oap0gBQWlEz6387Ahp2vxWPZcGE4vg=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/527569.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/527569.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1779142267,
@@ -795,6 +807,7 @@
         "nix-colors": "nix-colors",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_7",
+        "nixpkgs-patch-cook-cli": "nixpkgs-patch-cook-cli",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "vicinae": "vicinae"

@@ -6,12 +6,6 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    # nixpkgs-patch-dawarich = {
-    #   url = "https://github.com/NixOS/nixpkgs/pull/423867.diff";
-    #   flake = false;
-    # };
-
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -65,6 +59,12 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+    nixpkgs-patch-cook-cli = {
+      url = "https://github.com/NixOS/nixpkgs/pull/527569.diff";
+      flake = false;
+    };
   };
 
   outputs =
