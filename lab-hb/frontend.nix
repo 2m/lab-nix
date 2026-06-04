@@ -35,6 +35,8 @@
           <dd>RSS feeds</dd>
           <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
           <dd>Web archiver</dd>
+          <dt><a href='https://netbox.${config.vars.fqdn}/'>https://netbox.${config.vars.fqdn}/</a></dt>
+          <dd>Network Infra</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -95,7 +97,18 @@
       reverse_proxy http://localhost:${toString config.services.betula.port}
       ${config.vars.tlsConfig}
     '';
+    virtualHosts."https://netbox.${config.vars.fqdn}".extraConfig = ''
+      @notStatic {
+        not path /static/*
+      }
+      reverse_proxy @notStatic http://localhost:${toString config.services.netbox.port}
+      root * ${config.services.netbox.dataDir}
+      file_server
+      ${config.vars.tlsConfig}
+    '';
   };
+
+  users.users.caddy.extraGroups = [ "netbox" ];
 
   age.secrets.cloudflare_token.file = ../secrets/cloudflare_token.age;
 
