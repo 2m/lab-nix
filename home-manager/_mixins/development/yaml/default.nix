@@ -28,8 +28,8 @@
           yaml-language-server = {
             settings = {
               yaml = {
-                # Enforces alphabetical ordering of keys in maps
-                keyOrdering = true;
+                # disables enforcing alphabetical ordering of keys in maps
+                keyOrdering = false;
               };
             };
           };

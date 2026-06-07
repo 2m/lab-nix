@@ -98,6 +98,9 @@
 
         # vscode
         ".vscode"
+
+        # macos
+        ".DS_Store"
       ];
     };
   };
