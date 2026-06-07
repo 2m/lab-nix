@@ -63,6 +63,42 @@
           commit.gpgsign = true;
         })
       ];
+
+      ignores = [
+        # intellij idea
+        ".idea"
+        ".idea_modules"
+        ".settings"
+        "*.iml"
+
+        # scala
+        ".boot"
+        ".sbtboot"
+        ".ivy"
+        ".classpath"
+        ".project"
+        "target"
+        ".target"
+        ".sbt/cache"
+        ".sbtserver"
+        ".sbtserver.lock"
+        "*.class"
+        "*.sjsir"
+        "hs_err_pid*"
+        ".gradle"
+        ".metals"
+        ".bloop"
+        "metals.sbt"
+        ".bsp"
+        "dist"
+        ".js"
+
+        # python
+        "venv"
+
+        # vscode
+        ".vscode"
+      ];
     };
   };
 }
