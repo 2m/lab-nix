@@ -62,6 +62,7 @@ in
           mode = "subtle";
         };
         autosave = "on_focus_change";
+        indent_on_paste = false;
       };
       userKeymaps =
         # control characters from https://en.wikipedia.org/wiki/ASCII#ASCII_control_characters
