@@ -61,10 +61,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-cook-cli = {
-      url = "https://github.com/NixOS/nixpkgs/pull/527569.diff";
-      flake = false;
-    };
+    # nixpkgs-patch-cook-cli = {
+    #   url = "https://github.com/NixOS/nixpkgs/pull/527569.diff";
+    #   flake = false;
+    # };
   };
 
   outputs =
