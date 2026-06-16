@@ -773,8 +773,25 @@
         "nixpkgs": "nixpkgs_7",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
+        "rtkbase-service": "rtkbase-service",
         "vicinae": "vicinae"
       }
+    },
+    "rtkbase-service": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./flakes/rtkbase-service",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/rtkbase-service",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {

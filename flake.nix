@@ -40,6 +40,12 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    rtkbase-service = {
+      url = "./flakes/rtkbase-service";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     musnix.url = "github:musnix/musnix";
@@ -131,6 +137,7 @@
             }
             agenix.nixosModules.default
             inputs.mikrotik-exporter.nixosModules.default
+            inputs.rtkbase-services.nixosModules.default
           ];
           specialArgs = inputs;
         };
