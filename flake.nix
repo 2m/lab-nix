@@ -71,6 +71,9 @@
     #   url = "https://github.com/NixOS/nixpkgs/pull/527569.diff";
     #   flake = false;
     # };
+
+    matthew-hardware.url = "git+https://codeberg.org/matthewcroughan/matthew-hardware.git";
+
   };
 
   outputs =
@@ -149,6 +152,13 @@
           ];
           specialArgs = inputs;
         };
+        lab-rpi0 = inputs.nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./lab-rpi0/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
       darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
@@ -171,6 +181,7 @@
         ];
         specialArgs = inputs;
       };
+
     }
     // inputs.flake-utils.lib.eachDefaultSystem (system: {
       formatter = inputs.nixpkgs.legacyPackages.${system}.nixfmt-tree;
