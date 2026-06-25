@@ -13,6 +13,6 @@ in
   };
 
   # Cross compile from aarch64-linux -> armv6l-linux
-  nixpkgs.buildPlatform.system = "aarch64-linux";
+  nixpkgs.buildPlatform.system = "x86_64-linux";
   nixpkgs.hostPlatform.system = "armv6l-linux";
 }
