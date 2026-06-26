@@ -94,7 +94,7 @@
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.betula.port}
+      reverse_proxy http://localhost:3003
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://netbox.${config.vars.fqdn}".extraConfig = ''

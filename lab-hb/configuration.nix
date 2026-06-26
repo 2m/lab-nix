@@ -136,14 +136,19 @@
         LISTEN_ADDR = "localhost:8280";
       };
     };
-    betula = {
-      enable = false;
-    };
     netbox = {
       enable = true;
       package = pkgs.netbox;
       secretKeyFile = config.age.secrets.netbox_secret_key.path;
       apiTokenPeppersFile = config.age.secrets.netbox_api_token_peppers.path;
+    };
+    karakeep = {
+      enable = true;
+      extraEnvironment = {
+        PORT = "3003";
+        CRAWLER_FULL_PAGE_SCREENSHOT = "true";
+        CRAWLER_FULL_PAGE_ARCHIVE = "true";
+      };
     };
   };
 
