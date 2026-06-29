@@ -7,6 +7,7 @@
     ./grafana.nix
     ./jellyfin.nix
     ./qbittorrent-exporter-module.nix
+    ./storage.nix
     ./victorialogs.nix
     ./victoriametrics.nix
     ../modules/common.nix
