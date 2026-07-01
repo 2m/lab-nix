@@ -73,25 +73,6 @@
         "type": "github"
       }
     },
-    "betula-service": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "path": "./flakes/betula-service",
-        "type": "path"
-      },
-      "original": {
-        "path": "./flakes/betula-service",
-        "type": "path"
-      },
-      "parent": []
-    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -911,7 +892,6 @@
       "inputs": {
         "agenix": "agenix",
         "alacritty-theme": "alacritty-theme",
-        "betula-service": "betula-service",
         "determinate": "determinate",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager_2",
@@ -932,6 +912,9 @@
     },
     "rtkbase-service": {
       "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
