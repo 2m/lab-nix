@@ -34,12 +34,6 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    betula-service = {
-      url = "./flakes/betula-service";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     rtkbase-service = {
       url = "./flakes/rtkbase-service";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,7 +94,6 @@
             agenix.nixosModules.default
             jellarr.nixosModules.default
             inputs.intel-gpu-exporter.nixosModules.default
-            inputs.betula-service.nixosModules.default
           ];
           specialArgs = inputs;
         };
@@ -140,7 +133,7 @@
             }
             agenix.nixosModules.default
             inputs.mikrotik-exporter.nixosModules.default
-            inputs.rtkbase-services.nixosModules.default
+            inputs.rtkbase-service.nixosModules.default
           ];
           specialArgs = inputs;
         };
