@@ -10,6 +10,14 @@
       with pkgs;
       [
         scala-cli
+        (stdenv.mkDerivation {
+          name = "scala";
+          version = scala-cli.version;
+          buildCommand = ''
+            mkdir -p $out/bin
+            ln -s ${lib.getExe scala-cli} $out/bin/scala
+          '';
+        })
       ]
       ++ lib.optionals config.programs.zed-editor.enable [
         metals
