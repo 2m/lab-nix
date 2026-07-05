@@ -68,6 +68,10 @@
 
     matthew-hardware.url = "git+https://codeberg.org/matthewcroughan/matthew-hardware.git";
 
+    chirpstack = {
+      url = "github:2m/blazing-cluster/fix/chirpstack-flake-2m?dir=flakes/chirpstack-network-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -79,7 +83,6 @@
       ...
     }@inputs:
     {
-
       nixosConfigurations = {
         lab-hb = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
@@ -134,6 +137,8 @@
             agenix.nixosModules.default
             inputs.mikrotik-exporter.nixosModules.default
             inputs.rtkbase-service.nixosModules.default
+            inputs.chirpstack.nixosModules.chirpstack-network-server
+            inputs.chirpstack.nixosModules.chirpstack-gateway-bridge
           ];
           specialArgs = inputs;
         };

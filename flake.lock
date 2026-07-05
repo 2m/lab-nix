@@ -73,6 +73,29 @@
         "type": "github"
       }
     },
+    "chirpstack": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "flakes/chirpstack-network-server",
+        "lastModified": 1783274845,
+        "narHash": "sha256-L+eC9z9U+KSxatdnLedoeg9EQP+Xcc1po+Zo7+7aAEs=",
+        "owner": "2m",
+        "repo": "blazing-cluster",
+        "rev": "30a9bca30056a8b8a573c16f4b864872ee97176b",
+        "type": "github"
+      },
+      "original": {
+        "dir": "flakes/chirpstack-network-server",
+        "owner": "2m",
+        "ref": "fix/chirpstack-flake-2m",
+        "repo": "blazing-cluster",
+        "type": "github"
+      }
+    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -892,6 +915,7 @@
       "inputs": {
         "agenix": "agenix",
         "alacritty-theme": "alacritty-theme",
+        "chirpstack": "chirpstack",
         "determinate": "determinate",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager_2",

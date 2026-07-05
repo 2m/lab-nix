@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./audio-link.nix
+    ./chirpstack
     ./frontend.nix
     ./hardware-configuration.nix
     ./monitoring.nix

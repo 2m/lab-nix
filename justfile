@@ -1,7 +1,7 @@
 current_hostname := `hostname -s`
 
 switch host system args="":
-    ssh root@{{ host }} -t 'nixos-rebuild switch --flake /etc/nixos#{{ system }} {{ args }}'
+    ssh root@{{ host }} -t 'nixos-rebuild switch --show-trace --flake /etc/nixos#{{ system }} {{ args }}'
 
 repl host system:
     ssh root@{{ host }} -t 'nixos-rebuild repl --flake /etc/nixos#{{ system }}'
