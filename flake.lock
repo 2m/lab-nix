@@ -81,11 +81,11 @@
       },
       "locked": {
         "dir": "flakes/chirpstack-network-server",
-        "lastModified": 1783274845,
-        "narHash": "sha256-L+eC9z9U+KSxatdnLedoeg9EQP+Xcc1po+Zo7+7aAEs=",
+        "lastModified": 1783455868,
+        "narHash": "sha256-aq97LHv43nRCIoT0WBlCVd1T8g/cQWRfM+8bU81/6FQ=",
         "owner": "2m",
         "repo": "blazing-cluster",
-        "rev": "30a9bca30056a8b8a573c16f4b864872ee97176b",
+        "rev": "810c6d0bc82a8acbd6cde17011f92739700fcfe9",
         "type": "github"
       },
       "original": {
