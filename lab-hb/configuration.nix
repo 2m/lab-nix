@@ -153,6 +153,32 @@
     };
   };
 
+  services.samba = {
+    enable = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "lab.2m.lt";
+        "netbios name" = "lab.2m.lt";
+        "security" = "user";
+        "hosts allow" = "100.64.0.0/10 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+      "cook" = {
+        "path" = "/var/lib/cook-cli/";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "cook-cli";
+        "force group" = "cook-cli";
+      };
+    };
+  };
+
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
