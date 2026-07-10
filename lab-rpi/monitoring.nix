@@ -29,6 +29,9 @@
 
         queue = true;
         poe = false;
+
+        wireless = true;
+        wireless_clients = true;
       };
       "wifi" = {
         hostname = "192.168.88.243";

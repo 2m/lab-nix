@@ -53,7 +53,7 @@
         }
         {
           job_name = "mikrotik";
-          scrape_interval = "60s";
+          scrape_interval = "30s";
           static_configs = [ { targets = [ "http://lab-rpi.2m.lt:49090/metrics" ]; } ];
         }
       ];
