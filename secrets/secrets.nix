@@ -82,4 +82,8 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "oidc_secret_miniflux_dex.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }

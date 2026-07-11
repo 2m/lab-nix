@@ -2,11 +2,13 @@
 
 {
   imports = [
+    ./auth
     ./hardware-configuration.nix
     ./frontend.nix
     ./grafana.nix
     ./jellyfin.nix
     ./qbittorrent-exporter-module.nix
+    ./rss.nix
     ./storage.nix
     ./victorialogs.nix
     ./victoriametrics.nix
@@ -68,12 +70,6 @@
     group = config.services.qbittorrent-exporter.group;
   };
 
-  age.secrets.miniflux = {
-    file = ../secrets/miniflux.age;
-    owner = "miniflux";
-    group = "miniflux";
-  };
-
   age.secrets.netbox_secret_key = {
     file = ../secrets/netbox_secret_key.age;
     owner = "netbox";
@@ -130,13 +126,6 @@
     };
     intel-gpu-exporter.enable = true;
     cook-cli.enable = true;
-    miniflux = {
-      enable = true;
-      adminCredentialsFile = config.age.secrets.miniflux.path;
-      config = {
-        LISTEN_ADDR = "localhost:8280";
-      };
-    };
     netbox = {
       enable = true;
       package = pkgs.netbox;

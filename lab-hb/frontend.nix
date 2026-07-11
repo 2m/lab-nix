@@ -37,6 +37,8 @@
           <dd>Web archiver</dd>
           <dt><a href='https://netbox.${config.vars.fqdn}/'>https://netbox.${config.vars.fqdn}/</a></dt>
           <dd>Network Infra</dd>
+          <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
+          <dd>OpenID Connect identity</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -95,6 +97,10 @@
     '';
     virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:3003
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://dex.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:5556
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://netbox.${config.vars.fqdn}".extraConfig = ''
