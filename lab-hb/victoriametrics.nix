@@ -56,6 +56,11 @@
           scrape_interval = "30s";
           static_configs = [ { targets = [ "http://lab-rpi.2m.lt:49090/metrics" ]; } ];
         }
+        {
+          job_name = "miniflux";
+          scrape_interval = "60s";
+          static_configs = [ { targets = [ "https://rss.lab.2m.lt/metrics" ]; } ];
+        }
       ];
     };
   };
