@@ -5,6 +5,11 @@
     virtualHosts."https://${config.vars.fqdn}".extraConfig = ''
       header Content-Type text/html
       respond "
+        <style>
+        dd {
+          margin-bottom: 10px;
+        }
+        </style>
         <h3>Welcome to the 2m lab</h3>
         <dl>
           <dt><a href='https://irc.${config.vars.fqdn}'>https://irc.${config.vars.fqdn}</a></dt>
@@ -39,6 +44,8 @@
           <dd>Network Infra</dd>
           <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
           <dd>OpenID Connect identity</dd>
+          <dt><a href='https://st.${config.vars.fqdn}/'>https://st.${config.vars.fqdn}/</a></dt>
+          <dd>Syncthing</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -110,6 +117,10 @@
       reverse_proxy @notStatic http://localhost:${toString config.services.netbox.port}
       root * ${config.services.netbox.dataDir}
       file_server
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://st.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:8384
       ${config.vars.tlsConfig}
     '';
   };

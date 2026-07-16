@@ -3,11 +3,13 @@
 {
   imports = [
     ./auth
+    ./filesync.nix
     ./hardware-configuration.nix
     ./frontend.nix
     ./grafana.nix
     ./jellyfin.nix
     ./qbittorrent-exporter-module.nix
+    ./recipes.nix
     ./rss.nix
     ./storage.nix
     ./victorialogs.nix
@@ -125,7 +127,6 @@
       group = config.services.radarr.group;
     };
     intel-gpu-exporter.enable = true;
-    cook-cli.enable = true;
     netbox = {
       enable = true;
       package = pkgs.netbox;
@@ -154,16 +155,6 @@
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
-      };
-      "cook" = {
-        "path" = "/var/lib/cook-cli/";
-        "browseable" = "yes";
-        "read only" = "no";
-        "guest ok" = "yes";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "cook-cli";
-        "force group" = "cook-cli";
       };
     };
   };
