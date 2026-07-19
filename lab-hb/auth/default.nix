@@ -39,6 +39,12 @@
           userID = "b8a1f2b0-0000-0000-0000-000000000002";
           hash = "$2y$10$UWwPve1hKalloRnCyubCUetjax4gHzAKIayXcD8OiXr87Bz5p4FOm";
         }
+        {
+          email = "gabrius@2m.lt";
+          username = "gabrius";
+          userID = "b8a1f2b0-0000-0000-0000-000000000003";
+          hash = "$2y$10$A7eWw4Vj5fY.OKQNE17YoeoQrd1clM5igBg99fH6/dxPpdkgPJcta";
+        }
       ];
     };
     environmentFile = config.age.secrets.oidc_secret_miniflux_dex.path;
