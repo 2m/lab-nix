@@ -194,6 +194,13 @@
         OnCalendar = "00:05";
         RandomizedDelaySec = "5h";
       };
+
+      pruneOpts = [
+        "--keep-daily 7"
+        "--keep-weekly 4"
+        "--keep-monthly 3"
+        "--keep-yearly 1"
+      ];
     };
   };
 
