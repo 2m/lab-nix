@@ -12,11 +12,21 @@
           "carla" = {
             id = "N66XTE4-DOVHGQQ-5T67FG3-X3N7S3Q-VOBNHUV-AK3PWHL-6G4HMKM-N2LJRAK";
           };
+          "nico" = {
+            id = "4DERCP4-W547IEF-RSDCAT6-6EQCYEF-E3QYK4S-ARXUYHD-TLLLCWL-MVPU4QU";
+          };
         };
         folders = {
           "cook" = {
             path = "/var/lib/syncthing/cook-cli";
             devices = [ "carla" ];
+          };
+          "obsidian-notes" = {
+            path = "/var/lib/syncthing/obsidian-notes";
+            devices = [
+              "carla"
+              "nico"
+            ];
           };
         };
       };
