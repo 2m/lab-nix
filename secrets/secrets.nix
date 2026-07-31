@@ -86,4 +86,8 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "searx.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }

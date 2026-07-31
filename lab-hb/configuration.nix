@@ -11,6 +11,7 @@
     ./qbittorrent-exporter-module.nix
     ./recipes.nix
     ./rss.nix
+    ./search.nix
     ./storage.nix
     ./victorialogs.nix
     ./victoriametrics.nix

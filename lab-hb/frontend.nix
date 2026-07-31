@@ -46,6 +46,8 @@
           <dd>OpenID Connect identity</dd>
           <dt><a href='https://st.${config.vars.fqdn}/'>https://st.${config.vars.fqdn}/</a></dt>
           <dd>Syncthing</dd>
+          <dt><a href='https://search.${config.vars.fqdn}/'>https://search.${config.vars.fqdn}/</a></dt>
+          <dd>SearXNG</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -121,6 +123,10 @@
     '';
     virtualHosts."https://st.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:8384
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://search.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.searx.port}
       ${config.vars.tlsConfig}
     '';
   };
