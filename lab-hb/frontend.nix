@@ -105,7 +105,7 @@
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
-      reverse_proxy http://localhost:3003
+      reverse_proxy http://localhost:${toString config.services.karakeep.port}
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://dex.${config.vars.fqdn}".extraConfig = ''

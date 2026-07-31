@@ -90,4 +90,8 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "karakeep.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }
