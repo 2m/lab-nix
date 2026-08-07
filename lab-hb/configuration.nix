@@ -74,18 +74,6 @@
     group = config.services.qbittorrent-exporter.group;
   };
 
-  age.secrets.netbox_secret_key = {
-    file = ../secrets/netbox_secret_key.age;
-    owner = "netbox";
-    group = "netbox";
-  };
-
-  age.secrets.netbox_api_token_peppers = {
-    file = ../secrets/netbox_api_token_peppers.age;
-    owner = "netbox";
-    group = "netbox";
-  };
-
   services = {
     thelounge.enable = true;
     calibre-web = {
@@ -129,12 +117,6 @@
       group = config.services.radarr.group;
     };
     intel-gpu-exporter.enable = true;
-    netbox = {
-      enable = true;
-      package = pkgs.netbox;
-      secretKeyFile = config.age.secrets.netbox_secret_key.path;
-      apiTokenPeppersFile = config.age.secrets.netbox_api_token_peppers.path;
-    };
   };
 
   services.samba = {

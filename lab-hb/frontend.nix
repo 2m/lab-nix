@@ -40,8 +40,6 @@
           <dd>RSS feeds</dd>
           <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
           <dd>Web archiver</dd>
-          <dt><a href='https://netbox.${config.vars.fqdn}/'>https://netbox.${config.vars.fqdn}/</a></dt>
-          <dd>Network Infra</dd>
           <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
           <dd>OpenID Connect identity</dd>
           <dt><a href='https://st.${config.vars.fqdn}/'>https://st.${config.vars.fqdn}/</a></dt>
@@ -112,15 +110,6 @@
       reverse_proxy http://localhost:5556
       ${config.vars.tlsConfig}
     '';
-    virtualHosts."https://netbox.${config.vars.fqdn}".extraConfig = ''
-      @notStatic {
-        not path /static/*
-      }
-      reverse_proxy @notStatic http://localhost:${toString config.services.netbox.port}
-      root * ${config.services.netbox.dataDir}
-      file_server
-      ${config.vars.tlsConfig}
-    '';
     virtualHosts."https://st.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:8384
       ${config.vars.tlsConfig}
@@ -130,8 +119,6 @@
       ${config.vars.tlsConfig}
     '';
   };
-
-  users.users.caddy.extraGroups = [ "netbox" ];
 
   age.secrets.cloudflare_token.file = ../secrets/cloudflare_token.age;
 
