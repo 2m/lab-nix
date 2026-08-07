@@ -67,7 +67,7 @@
               collectionType = "movies";
               libraryOptions = {
                 pathInfos = [
-                  { path = "/media/movies/"; }
+                  { path = "/mnt/storage/movies/"; }
                 ];
               };
               name = "Movies";
@@ -76,7 +76,7 @@
               collectionType = "music";
               libraryOptions = {
                 pathInfos = [
-                  { path = "/media/music/"; }
+                  { path = "/mnt/storage/music/"; }
                 ];
               };
               name = "Music";
