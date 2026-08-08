@@ -61,10 +61,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    # nixpkgs-patch-cook-cli = {
-    #   url = "https://github.com/NixOS/nixpkgs/pull/527569.diff";
-    #   flake = false;
-    # };
+    nixpkgs-patch-meilisearch = {
+      url = "https://github.com/NixOS/nixpkgs/pull/549487.diff";
+      flake = false;
+    };
 
     matthew-hardware.url = "git+https://codeberg.org/matthewcroughan/matthew-hardware.git";
 

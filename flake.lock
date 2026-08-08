@@ -687,6 +687,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-meilisearch": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-5XZuD8OfDfkzP9ANYe15uLsU3MzXE98NHuHeAu2XrHE=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/549487.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/549487.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1781789965,
@@ -956,6 +968,7 @@
         "nix-colors": "nix-colors",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_11",
+        "nixpkgs-patch-meilisearch": "nixpkgs-patch-meilisearch",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "rtkbase-service": "rtkbase-service",
