@@ -9,7 +9,6 @@
     ./frontend.nix
     ./grafana.nix
     ./jellyfin.nix
-    ./qbittorrent-exporter-module.nix
     ./recipes.nix
     ./rss.nix
     ./search.nix
@@ -68,12 +67,6 @@
     };
   };
 
-  age.secrets.qbittorrent = {
-    file = ../secrets/qbittorrent.age;
-    owner = config.services.qbittorrent-exporter.user;
-    group = config.services.qbittorrent-exporter.group;
-  };
-
   services = {
     thelounge.enable = true;
     calibre-web = {
@@ -95,12 +88,6 @@
       package = pkgs.qbittorrent-nox;
       webuiPort = 8080;
       torrentingPort = 60413;
-    };
-    qbittorrent-exporter = {
-      enable = true;
-      environment = {
-        QBITTORRENT_PASSWORD_FILE = config.age.secrets.qbittorrent.path;
-      };
     };
     radarr.enable = true;
     jackett.enable = true;

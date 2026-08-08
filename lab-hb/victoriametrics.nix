@@ -33,13 +33,6 @@
           static_configs = [ { targets = [ "http://127.0.0.1:8428/metrics" ]; } ];
         }
         {
-          job_name = "qbittorrent";
-          scrape_interval = "60s";
-          static_configs = [
-            { targets = [ "http://127.0.0.1:${toString config.services.qbittorrent-exporter.port}/metrics" ]; }
-          ];
-        }
-        {
           job_name = "speedtest_lab_rpi";
           scrape_interval = "5m";
           scrape_timeout = "2m";

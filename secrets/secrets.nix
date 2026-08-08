@@ -22,10 +22,6 @@ in
     ];
     armor = true;
   };
-  "qbittorrent.age" = {
-    publicKeys = users ++ [ lab-hb ];
-    armor = true;
-  };
   "jellarr_api_key.age" = {
     publicKeys = users ++ [ lab-hb ];
     armor = true;
