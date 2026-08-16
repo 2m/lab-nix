@@ -972,7 +972,8 @@
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "rtkbase-service": "rtkbase-service",
-        "vicinae": "vicinae"
+        "vicinae": "vicinae",
+        "watcharr": "watcharr"
       }
     },
     "rtkbase-service": {
@@ -1132,6 +1133,25 @@
         "repo": "vicinae",
         "type": "github"
       }
+    },
+    "watcharr": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./flakes/watcharr",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/watcharr",
+        "type": "path"
+      },
+      "parent": []
     },
     "xwayland-satellite-stable": {
       "flake": false,

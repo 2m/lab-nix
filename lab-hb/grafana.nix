@@ -16,7 +16,7 @@
     settings = {
       server = {
         http_addr = "127.0.0.1";
-        http_port = 3000;
+        http_port = 3001;
         enable_gzip = true;
       };
       analytics.reporting_enabled = false;

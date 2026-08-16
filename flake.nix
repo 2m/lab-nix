@@ -40,6 +40,12 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    watcharr = {
+      url = "./flakes/watcharr";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     musnix.url = "github:musnix/musnix";
@@ -97,6 +103,7 @@
             agenix.nixosModules.default
             jellarr.nixosModules.default
             inputs.intel-gpu-exporter.nixosModules.default
+            inputs.watcharr.nixosModules.default
           ];
           specialArgs = inputs;
         };

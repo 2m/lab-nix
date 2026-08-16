@@ -104,6 +104,7 @@
       group = config.services.radarr.group;
     };
     intel-gpu-exporter.enable = true;
+    watcharr.enable = true;
   };
 
   services.samba = {

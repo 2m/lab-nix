@@ -46,6 +46,8 @@
           <dd>Syncthing</dd>
           <dt><a href='https://search.${config.vars.fqdn}/'>https://search.${config.vars.fqdn}/</a></dt>
           <dd>SearXNG</dd>
+          <dt><a href='https://watchlist.${config.vars.fqdn}/'>https://watchlist.${config.vars.fqdn}/</a></dt>
+          <dd>TV and Movie watchlist - Watcharr</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -116,6 +118,10 @@
     '';
     virtualHosts."https://search.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.searx.port}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://watchlist.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.watcharr.uiPort}
       ${config.vars.tlsConfig}
     '';
   };
