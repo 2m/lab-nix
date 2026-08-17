@@ -55,6 +55,8 @@
       done
       sleep 1  # give Dock a moment to fully initialize
       launchctl kickstart -k system/org.nixos.yabai-sa
+      # and restart yabai itself
+      launchctl stop org.nixos.yabai && launchctl start org.nixos.yabai
     '';
   };
 
