@@ -14,7 +14,7 @@
         <dl>
           <dt><a href='https://irc.${config.vars.fqdn}'>https://irc.${config.vars.fqdn}</a></dt>
           <dd>The Lounge IRC Web client</dd>
-          <dt><a href='https://books.${config.vars.fqdn}'>https://books.${config.vars.fqdn}</a></dt>
+          <dt><a href='https://books.${config.vars.fqdn}'>https://books.${config.vars.fqdn}</a> <a href='https://books-oauth.${config.vars.fqdn}'>https://books-oauth.${config.vars.fqdn}</a></dt>
           <dd>Books library - Calibre</dd>
           <dt><a href='https://mon.${config.vars.fqdn}'>https://mon.${config.vars.fqdn}</a></dt>
           <dd>Server monitoring</dd>
@@ -42,6 +42,13 @@
           <dd>Web archiver</dd>
           <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
           <dd>OpenID Connect identity</dd>
+          <dt><a href='https://oauth.${config.vars.fqdn}/'>https://oauth.${config.vars.fqdn}/</a></dt>
+          <dd>
+            oauth2-proxy
+            <a href='https://oauth.${config.vars.fqdn}/oauth2/sign_in'>Login</a>
+            <a href='https://oauth.${config.vars.fqdn}/oauth2/auth'>Headers</a>
+            <a href='https://oauth.${config.vars.fqdn}/oauth2/sign_out'>Logout</a>
+          </dd>
           <dt><a href='https://st.${config.vars.fqdn}/'>https://st.${config.vars.fqdn}/</a></dt>
           <dd>Syncthing</dd>
           <dt><a href='https://search.${config.vars.fqdn}/'>https://search.${config.vars.fqdn}/</a></dt>
@@ -110,6 +117,34 @@
     '';
     virtualHosts."https://dex.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:5556
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://oauth.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.oauth2-proxy.port}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://books-oauth.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy https://oauth.${config.vars.fqdn} {
+        method GET
+        rewrite /oauth2/auth
+        header_up X-Forwarded-Method {method}
+        header_up X-Forwarded-Uri {uri}
+
+        @authenticated status 2xx
+        handle_response @authenticated {
+          request_header X-Auth-Request-Email {rp.header.X-Auth-Request-Email}
+        }
+
+        @unauthorized status 401
+        handle_response @unauthorized {
+          redir https://oauth.${config.vars.fqdn}/oauth2/start?rd={scheme}://{host}{uri}
+        }
+      }
+
+      reverse_proxy https://books.${config.vars.fqdn} {
+        header_up Host books.${config.vars.fqdn}
+        header_up X-User {header.X-Auth-Request-Email}
+      }
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://st.${config.vars.fqdn}".extraConfig = ''

@@ -82,4 +82,12 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "oauth2_proxy.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
+  "oauth2_proxy_cookie_secret.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }
