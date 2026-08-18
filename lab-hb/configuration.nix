@@ -4,6 +4,7 @@
   imports = [
     ./auth
     ./archive.nix
+    ./books.nix
     ./filesync.nix
     ./hardware-configuration.nix
     ./frontend.nix
@@ -69,13 +70,6 @@
 
   services = {
     thelounge.enable = true;
-    calibre-web = {
-      enable = true;
-      options = {
-        enableBookUploading = true;
-        calibreLibrary = "/var/lib/calibre-library";
-      };
-    };
     lubelogger.enable = true;
     dawarich = {
       enable = true;

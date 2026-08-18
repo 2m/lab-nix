@@ -70,7 +70,7 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
-  "oidc_secret_miniflux_dex.age" = {
+  "dex.age" = {
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };

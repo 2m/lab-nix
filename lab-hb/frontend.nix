@@ -15,7 +15,7 @@
           <dt><a href='https://irc.${config.vars.fqdn}'>https://irc.${config.vars.fqdn}</a></dt>
           <dd>The Lounge IRC Web client</dd>
           <dt><a href='https://books.${config.vars.fqdn}'>https://books.${config.vars.fqdn}</a></dt>
-          <dd>Calibre Web book library</dd>
+          <dd>Books library - Calibre</dd>
           <dt><a href='https://mon.${config.vars.fqdn}'>https://mon.${config.vars.fqdn}</a></dt>
           <dd>Server monitoring</dd>
           <dt><a href='https://cars.${config.vars.fqdn}/'>https://cars.${config.vars.fqdn}/</a></dt>

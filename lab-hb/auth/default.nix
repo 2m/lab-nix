@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  age.secrets.oidc_secret_miniflux_dex.file = ../../secrets/oidc_secret_miniflux_dex.age;
+  age.secrets.dex.file = ../../secrets/dex.age;
 
   services.dex = {
     enable = true;
@@ -47,7 +47,7 @@
         }
       ];
     };
-    environmentFile = config.age.secrets.oidc_secret_miniflux_dex.path;
+    environmentFile = config.age.secrets.dex.path;
   };
 
   systemd.services.dex.serviceConfig.StateDirectory = "dex";
