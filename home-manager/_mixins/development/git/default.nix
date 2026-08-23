@@ -1,16 +1,9 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }:
 {
-  home = {
-    packages = with pkgs; [
-      helix
-    ];
-  };
-
   programs = {
     git = {
       enable = true;
@@ -20,8 +13,6 @@
           user.email = "self@2m.lt";
 
           init.defaultBranch = "main";
-
-          core.editor = "hx";
 
           tag.sort = "version:refname";
           diff = {
