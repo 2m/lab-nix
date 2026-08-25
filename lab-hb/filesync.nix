@@ -15,6 +15,9 @@
           "nico" = {
             id = "4DERCP4-W547IEF-RSDCAT6-6EQCYEF-E3QYK4S-ARXUYHD-TLLLCWL-MVPU4QU";
           };
+          "telepunkinas" = {
+            id = "ABJP7AP-WFXAEVL-MJMRZ74-MDT5MGC-CUMNSC5-KAPAMGM-QGV3RIS-PLEDHAD";
+          };
         };
         folders = {
           "cook" = {
@@ -26,6 +29,13 @@
             devices = [
               "carla"
               "nico"
+            ];
+          };
+          "tv" = {
+            path = "/var/lib/syncthing/tv";
+            devices = [
+              "nico"
+              "telepunkinas"
             ];
           };
         };
