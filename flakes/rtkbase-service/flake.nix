@@ -3,15 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    { ... }@inputs:
-    {
-      nixosModules.default = import ../../modules/rtkbase/deefault.nix;
-    }
-    // inputs.flake-utils.lib.eachDefaultSystem (system: {
-      formatter = inputs.nixpkgs.legacyPackages.${system}.nixfmt-tree;
-    });
+  outputs = inputs: {
+    nixosModules.default = import ../../modules/rtkbase/default.nix;
+
+    formatter = builtins.mapAttrs (_system: pkgs: pkgs.nixfmt-tree) inputs.nixpkgs.legacyPackages;
+  };
 }
