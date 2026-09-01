@@ -76,7 +76,6 @@
 
     nix-colors = {
       url = "github:misterio77/nix-colors";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
