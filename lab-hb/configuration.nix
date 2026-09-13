@@ -4,6 +4,7 @@
   imports = [
     ./auth
     ./archive.nix
+    ./automation.nix
     ./books.nix
     ./filesync.nix
     ./hardware-configuration.nix

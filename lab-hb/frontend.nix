@@ -55,6 +55,8 @@
           <dd>SearXNG</dd>
           <dt><a href='https://watchlist.${config.vars.fqdn}/'>https://watchlist.${config.vars.fqdn}/</a></dt>
           <dd>TV and Movie watchlist - Watcharr</dd>
+          <dt><a href='https://atm.${config.vars.fqdn}/'>https://atm.${config.vars.fqdn}/</a></dt>
+          <dd>Automation - n8n</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -157,6 +159,10 @@
     '';
     virtualHosts."https://watchlist.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.watcharr.uiPort}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://atm.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.n8n.environment.N8N_PORT}
       ${config.vars.tlsConfig}
     '';
   };
