@@ -68,7 +68,7 @@ in
 
   # Launchd agent to run Grafana as a background service
   launchd.agents.grafana = {
-    enable = true;
+    enable = false;
     config = {
       Label = "dev.grafana";
       ProgramArguments = [
