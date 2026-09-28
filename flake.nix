@@ -20,8 +20,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      # choose not to download darwin deps (saves some resources on Linux)
-      inputs.darwin.follows = "";
     };
 
     jellarr = {
@@ -79,10 +77,10 @@
     };
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-meilisearch = {
-      url = "https://github.com/NixOS/nixpkgs/pull/549487.diff";
-      flake = false;
-    };
+    # nixpkgs-patch-meilisearch = {
+    #   url = "https://github.com/NixOS/nixpkgs/pull/549487.diff";
+    #   flake = false;
+    # };
 
     matthew-hardware = {
       url = "git+https://codeberg.org/matthewcroughan/matthew-hardware.git";
