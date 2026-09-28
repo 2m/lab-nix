@@ -6,6 +6,7 @@
     ./archive.nix
     ./automation.nix
     ./books.nix
+    ./esphome.nix
     ./filesync.nix
     ./hardware-configuration.nix
     ./frontend.nix

@@ -1,0 +1,6 @@
+{ ... }:
+{
+  services.esphome = {
+    enable = true;
+  };
+}

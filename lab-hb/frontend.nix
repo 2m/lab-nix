@@ -57,6 +57,8 @@
           <dd>TV and Movie watchlist - Watcharr</dd>
           <dt><a href='https://atm.${config.vars.fqdn}/'>https://atm.${config.vars.fqdn}/</a></dt>
           <dd>Automation - n8n</dd>
+          <dt><a href='https://esphome.${config.vars.fqdn}/'>https://esphome.${config.vars.fqdn}/</a></dt>
+          <dd>Home automation - esphome</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -163,6 +165,10 @@
     '';
     virtualHosts."https://atm.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.n8n.environment.N8N_PORT}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://esphome.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.esphome.port}
       ${config.vars.tlsConfig}
     '';
   };
