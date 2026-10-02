@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   services.caddy = {
     enable = true;
@@ -37,7 +37,9 @@
           <dt><a href='https://cook.${config.vars.fqdn}/'>https://cook.${config.vars.fqdn}/</a></dt>
           <dd>Recipes</dd>
           <dt><a href='https://rss.${config.vars.fqdn}/'>https://rss.${config.vars.fqdn}/</a></dt>
-          <dd>RSS feeds</dd>
+          <dd>RSS feeds - miniflux</dd>
+          <dt><a href='https://web2rss.${config.vars.fqdn}/'>https://web2rss.${config.vars.fqdn}/</a></dt>
+          <dd>web 2 rss - rss-bridge</dd>
           <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
           <dd>Web archiver</dd>
           <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
@@ -113,6 +115,14 @@
     '';
     virtualHosts."https://rss.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:8280
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://web2rss.${config.vars.fqdn}".extraConfig = ''
+      php_fastcgi unix/${config.services.phpfpm.pools.rss-bridge.socket} {
+        ${config.services.rss-bridge.envConf}
+      }
+      root * ${pkgs.rss-bridge}
+      file_server
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
