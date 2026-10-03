@@ -649,6 +649,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-cookcli": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-mwIf3qlJ2b1BEYKGCL6WEh8zO/Z1O6AzMP9rVvK68B8=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/552347.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/552347.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1789143781,
@@ -815,6 +827,7 @@
         "nix-colors": "nix-colors",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-patch-cookcli": "nixpkgs-patch-cookcli",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "rtkbase-service": "rtkbase-service",
