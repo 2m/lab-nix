@@ -94,7 +94,7 @@
   };
 
   outputs = inputs:
-    {
+    let
       nixosConfigurations = {
         lab-hb = inputs.nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
@@ -171,6 +171,9 @@
           specialArgs = { inherit inputs; };
         };
       };
+    in
+    {
+      inherit nixosConfigurations;
 
       darwinConfigurations."carla" = inputs.nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -194,5 +197,8 @@
       };
 
       formatter = builtins.mapAttrs (_system: pkgs: pkgs.nixfmt-tree) inputs.nixpkgs.legacyPackages;
+
+      checks.x86_64-linux.lab-hb =
+        nixosConfigurations.lab-hb.config.system.build.toplevel;
     };
 }
