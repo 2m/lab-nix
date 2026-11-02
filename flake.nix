@@ -24,7 +24,8 @@
 
     jellarr = {
       url = "github:venkyr77/jellarr";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # allow following its own nixpkgs as pnpm deps hash can depend on it
     };
 
     intel-gpu-exporter = {
