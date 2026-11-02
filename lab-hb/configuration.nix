@@ -62,6 +62,19 @@
     ];
   };
 
+  age.secrets.nix_ci_token.file = ../secrets/nix_ci_token.age;
+
+  # nix-ci cache
+  nix.settings = {
+    netrc-file = config.age.secrets.nix_ci_token.path;
+    substituters = [
+      "https://cache.nix-ci.com"
+    ];
+    trusted-public-keys = [
+      "nix-ci:g3xV5BDTLtIBZr/A00IU1x0EtKKlb7YLgBN2SgYgM6A="
+    ];
+  };
+
   networking = {
     firewall = {
       allowedTCPPorts = [

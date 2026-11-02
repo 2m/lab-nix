@@ -90,4 +90,8 @@ in
     publicKeys = users ++ [ lab-hb ];
     armor = true;
   };
+  "nix_ci_token.age" = {
+    publicKeys = users ++ [ lab-hb ];
+    armor = true;
+  };
 }
