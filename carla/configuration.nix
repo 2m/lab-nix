@@ -21,6 +21,9 @@
       connect-timeout = 10;
 
       warn-dirty = false;
+
+      # nix-ci.com cache
+      netrc-file = "/Users/martynas/.netrc";
     };
   };
 
