@@ -22,8 +22,17 @@
 
       warn-dirty = false;
 
-      # nix-ci.com cache
-      netrc-file = "/Users/martynas/.netrc";
+      trusted-public-keys = [
+        # nix-ci.com cache
+        "nix-ci:g3xV5BDTLtIBZr/A00IU1x0EtKKlb7YLgBN2SgYgM6A="
+      ];
+    };
+
+    determinateNixd = {
+      authentication.additionalNetrcSources = [
+        # nix-ci.com cache
+        "/Users/martynas/.netrc"
+      ];
     };
   };
 
