@@ -34,6 +34,7 @@
   # Allow partition unlock via ssh
   boot.kernelParams = [ "ip=dhcp" ];
   boot.initrd = {
+    systemd.users.root.shell = "/bin/systemd-tty-ask-password-agent";
     network = {
       enable = true;
       ssh = {
@@ -41,7 +42,6 @@
         port = 2222; # Use a separate port to prevent conflict in your known hosts
         hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
-        shell = "/bin/systemd-tty-ask-password-agent";
       };
     };
     availableKernelModules = [

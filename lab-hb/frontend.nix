@@ -102,7 +102,7 @@
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://bazarr.${config.vars.fqdn}".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.bazarr.listenPort}
+      reverse_proxy http://localhost:${toString config.services.bazarr.settings.general.port}
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://lidarr.${config.vars.fqdn}".extraConfig = ''
