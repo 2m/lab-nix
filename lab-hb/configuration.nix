@@ -66,6 +66,7 @@
 
   # nix-ci cache
   nix.settings = {
+    trusted-users = [ "root" config.vars.username ]; # so non-root can use netrc-file setting
     netrc-file = config.age.secrets.nix_ci_token.path;
     substituters = [
       "https://cache.nix-ci.com"
