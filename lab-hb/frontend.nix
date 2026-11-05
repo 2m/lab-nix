@@ -42,6 +42,8 @@
           <dd>web 2 rss - rss-bridge</dd>
           <dt><a href='https://archive.${config.vars.fqdn}/'>https://archive.${config.vars.fqdn}/</a></dt>
           <dd>Web archiver</dd>
+          <dt><a href='https://hist.${config.vars.fqdn}/'>https://hist.${config.vars.fqdn}/</a></dt>
+          <dd>Personal Web history index</dd>
           <dt><a href='https://dex.${config.vars.fqdn}/'>https://dex.${config.vars.fqdn}/</a></dt>
           <dd>OpenID Connect identity</dd>
           <dt><a href='https://oauth.${config.vars.fqdn}/'>https://oauth.${config.vars.fqdn}/</a></dt>
@@ -127,6 +129,10 @@
     '';
     virtualHosts."https://archive.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.karakeep.port}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://hist.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.hister.port}
       ${config.vars.tlsConfig}
     '';
     virtualHosts."https://dex.${config.vars.fqdn}".extraConfig = ''

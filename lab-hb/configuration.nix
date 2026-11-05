@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ./frontend.nix
     ./grafana.nix
+    ./history.nix
     ./jellyfin.nix
     ./recipes.nix
     ./rss.nix
