@@ -201,5 +201,8 @@
 
       checks.x86_64-linux.lab-hb =
         nixosConfigurations.lab-hb.config.system.build.toplevel;
+
+      checks.aarch64-linux.lab-rpi =
+        nixosConfigurations.lab-rpi.config.system.build.toplevel;
     };
 }
