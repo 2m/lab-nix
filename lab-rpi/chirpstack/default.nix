@@ -33,10 +33,10 @@
     };
   };
 
-  # required for chirpstack-gateway-bridge
   networking = {
     firewall = {
-      allowedUDPPorts = [ 1700 ];
+      allowedUDPPorts = [ 1700 ]; # required for chirpstack-gateway-bridge
+      allowedTCPPorts = [ 8080 ]; # required for hassio gRPC access
     };
   };
 
