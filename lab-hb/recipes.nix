@@ -1,10 +1,11 @@
-{ ... }:
+{ config, lib, ... }:
 let
   dataDir = "/var/lib/cook-cli";
 in
 {
   services = {
     cook-cli.enable = true;
+
 
     samba = {
       settings = {
@@ -21,4 +22,8 @@ in
       };
     };
   };
+
+  systemd.services.cook-cli.serviceConfig.ExecStart = lib.mkForce ''
+    ${lib.getExe config.services.cook-cli.package} server --host --port ${toString config.services.cook-cli.port} --cors-origin https://cook.lab.2m.lt ${config.services.cook-cli.basePath}
+  '';
 }
