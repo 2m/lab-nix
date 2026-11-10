@@ -13,6 +13,7 @@
     ./grafana.nix
     ./history.nix
     ./jellyfin.nix
+    ./music.nix
     ./recipes.nix
     ./rss.nix
     ./search.nix

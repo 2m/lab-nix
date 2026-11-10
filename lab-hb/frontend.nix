@@ -63,6 +63,8 @@
           <dd>Automation - n8n</dd>
           <dt><a href='https://esphome.${config.vars.fqdn}/'>https://esphome.${config.vars.fqdn}/</a></dt>
           <dd>Home automation - esphome</dd>
+          <dt><a href='https://music.${config.vars.fqdn}/'>https://music.${config.vars.fqdn}/</a></dt>
+          <dd>Music player - Music Assistant</dd>
         </dl>
       "
       ${config.vars.tlsConfig}
@@ -185,6 +187,10 @@
     '';
     virtualHosts."https://esphome.${config.vars.fqdn}".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.esphome.port}
+      ${config.vars.tlsConfig}
+    '';
+    virtualHosts."https://music.${config.vars.fqdn}".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.music-assistant.port}
       ${config.vars.tlsConfig}
     '';
   };
