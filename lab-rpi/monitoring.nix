@@ -9,8 +9,8 @@
     owner = config.services.prometheus.exporters.mikrotikViaMktxp.user;
     group = config.services.prometheus.exporters.mikrotikViaMktxp.group;
   };
-  age.secrets.wifi_mktxp = {
-    file = ../secrets/wifi_mktxp.age;
+  age.secrets.wifi_studio_mktxp = {
+    file = ../secrets/wifi_studio_mktxp.age;
     owner = config.services.prometheus.exporters.mikrotikViaMktxp.user;
     group = config.services.prometheus.exporters.mikrotikViaMktxp.group;
   };
@@ -33,9 +33,9 @@
         wireless = true;
         wireless_clients = true;
       };
-      "wifi" = {
-        hostname = "192.168.88.243";
-        credentials_file = config.age.secrets.wifi_mktxp.path;
+      "wifi-studio" = {
+        hostname = "192.168.88.120";
+        credentials_file = config.age.secrets.wifi_studio_mktxp.path;
         remote_dhcp_entry = "router";
 
         wireless = true;

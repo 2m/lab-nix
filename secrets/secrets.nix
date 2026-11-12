@@ -52,7 +52,7 @@ in
     ];
     armor = true;
   };
-  "wifi_mktxp.age" = {
+  "wifi_studio_mktxp.age" = {
     publicKeys = users ++ [
       lab-rpi
       carla
