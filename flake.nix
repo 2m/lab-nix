@@ -78,10 +78,10 @@
     };
 
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-cookcli = {
-      url = "https://github.com/NixOS/nixpkgs/pull/552347.diff";
-      flake = false;
-    };
+    # nixpkgs-patch-cookcli = {
+    #   url = "https://github.com/NixOS/nixpkgs/pull/552347.diff";
+    #   flake = false;
+    # };
 
     matthew-hardware = {
       url = "git+https://codeberg.org/matthewcroughan/matthew-hardware.git";
