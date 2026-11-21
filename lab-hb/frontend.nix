@@ -210,7 +210,6 @@
       ];
       dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";
-      dnsPropagationCheck = true;
       environmentFile = config.age.secrets.cloudflare_token.path;
     };
   };
